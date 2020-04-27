@@ -15,12 +15,12 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import { UsersComponent } from './components/users/users.component';
 import { GuidesComponent } from './components/guides/guides.component';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
-import { PricecardintroComponent } from './components/pricecardintro/pricecardintro.component';
-import { PricecardEditorComponent } from './components/pricecard-editor/pricecard-editor.component';
-import { PricecardTemplateComponent } from './components/pricecard-template/pricecard-template.component';
-import { PricecardPreviousComponent } from './components/pricecard-previous/pricecard-previous.component';
+import { PricecardintroComponent } from './components/PriceCardMaker/pricecardintro/pricecardintro.component';
+import { PricecardEditorComponent } from './components/PriceCardMaker/pricecard-editor/pricecard-editor.component';
+import { PricecardTemplateComponent } from './components/PriceCardMaker/pricecard-template/pricecard-template.component';
+import { PricecardPreviousComponent } from './components/PriceCardMaker/pricecard-previous/pricecard-previous.component';
 import { HomewelkomComponent } from './components/homewelkom/homewelkom.component';
-import { PrintPageComponent } from './components/print-page/print-page.component';
+import { PrintPageComponent } from './components/PriceCardMaker/print-page/print-page.component';
 
 @NgModule({
   declarations: [

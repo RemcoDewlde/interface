@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder} from '@angular/forms';
-import {TemplateService} from '../../services/pricecardTemplate/template.service';
+import {TemplateService} from '../../../services/pricecardTemplate/template.service';
 import {Router} from '@angular/router';
+import {PreviousCardsService} from '../../../services/previousCards/previous-cards.service';
 
 @Component({
   selector: 'app-pricecard-editor',
@@ -14,7 +15,8 @@ export class PricecardEditorComponent implements OnInit {
   sellingPoints: FormArray;
   private stateSellingPointsArray;
 
-  constructor(private formBuilder: FormBuilder, private templateService: TemplateService, private router: Router) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private formBuilder: FormBuilder, private templateService: TemplateService, private router: Router, private priceCardService: PreviousCardsService) {
   }
 
   ngOnInit(): void {
@@ -84,12 +86,13 @@ export class PricecardEditorComponent implements OnInit {
   }
 
   saveToPreviousPriceCard(form) {
-    console.log(form);
-    // TODO: save the form as previous pricecard
+    const cop = JSON.parse(JSON.stringify(form));
+    this.priceCardService.postPriceCards(cop).subscribe((data) => {
+      this.ok = data;
+    });
   }
 
   toPreview(form) {
-    console.log(form);
     this.router.navigateByUrl('/home/printpage', {state : form});
   }
 }

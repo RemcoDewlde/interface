@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {PriceCard} from '../../classes/pricecard/price-card';
-import {TemplateService} from '../../services/pricecardTemplate/template.service';
+import {PriceCard} from '../../../classes/pricecard/price-card';
+import {TemplateService} from '../../../services/pricecardTemplate/template.service';
 import {Router} from '@angular/router';
 
 @Component({
