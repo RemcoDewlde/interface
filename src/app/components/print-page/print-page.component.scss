@@ -1,0 +1,124 @@
+.printContent {
+  font-family: "Helvetica Neue", sans-serif;
+  top: -1em;
+  color: black;
+
+
+  .productName {
+    font-size: 42px;
+    color: black;
+    font-weight: bold;
+    margin-top: 1em;
+    text-align: center;
+  }
+
+  .status {
+    margin-top: .45em;
+    text-align: center;
+    font-size: 36px;
+  }
+
+  .line {
+    margin-top: 1em;
+    margin-left: 3em;
+    margin-right: 3em;
+  }
+
+  .sellingPoints {
+    min-height: 29.4em;
+  }
+
+  .tableSellingPoints {
+    font-size: 30px;
+    margin-left: 1.3em;
+    margin-top: 1em;
+
+    td {
+      padding-right: 2em;
+      padding-top: .4em;
+    }
+  }
+
+  .prices {
+    margin-top: .5em;
+    color: black;
+    text-align: right;
+    display: flex;
+    padding-top: .5em;
+    margin-left: auto;
+    margin-right: .6em;
+    font-size: 108px;
+    font-weight: bold;
+    justify-content: right;
+
+    .price {
+      margin-right: .3em;
+      margin-left: auto;
+    }
+
+    .salePrice {
+      margin-left: auto;
+      color: red;
+    }
+
+  }
+  .marge{
+    text-align: right !important;
+    font-weight: bold;
+    margin-right: 6.55em;
+    margin-top: 1em;
+    text-transform: uppercase;
+    margin-bottom: .6em;
+  }
+
+  .logo {
+    position: fixed;
+    display: none;
+    margin-top: 1.5em;
+
+    left: 10px;
+    height: 7.8em;
+    padding: 20px 40px;
+    background-color: #4e9cf5;
+    bottom:0px;
+    overflow: hidden;
+    @media print {
+      display: block;
+      width: 100vw;
+      margin-right: 1vw;
+      margin-left: 1vw;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+
+  @media print {
+    .card {
+      border-style: none;
+      box-shadow: none;
+    }
+
+    html {
+      background-color: white !important;
+    }
+    .printContent {
+      page-break-before: always;
+      page-break-after: always;
+      margin-top: 1em;
+      background-color: white;
+      box-shadow: none !important;
+      padding: 0 !important;
+      height: 100vh;
+      width: 100vw;
+    }
+  }
+}
+
+@media print {
+  .noPrint {
+    display: none;
+  }
+}

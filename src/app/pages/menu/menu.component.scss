@@ -1,0 +1,21 @@
+.content-area{
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.content-area::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
+
+@media print {
+  .noPrint{
+    display: none;
+  }
+
+  .doPrint{
+    display: block;
+    background-color: white;
+  }
+}

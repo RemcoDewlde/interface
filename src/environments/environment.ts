@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api_url: '192.168.178.129:3000',
+  // enable/disable menu items
+  PriceCardMaker: true,
+  Form: true,
+  Guides: true,
+  Monitor: true,
+  Users: true,
+  Admin: true,
 };
 
 /*

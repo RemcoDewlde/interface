@@ -1,0 +1,56 @@
+<div class="clr-col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      Search
+    </div>
+    <div class="card-block">
+      <div class="card-text">
+        <label>
+          <clr-icon shape="search"></clr-icon>
+        </label>
+        <input placeholder="search" #search class="clr-input wider" (change)="searchTemplate(search.value)"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clr-row clr-justify-content-center warning" *ngIf="search.value.length >= 1 && templates.length <= 0 ">
+  <div class="clr-col-lg-8 clr-col-12">
+    <div class="alert alert-info" role="alert">
+      <div class="alert-items">
+        <div class="alert-item static">
+          <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+          </div>
+          <span class="alert-text">
+            It looks like there are no results for: {{search.value}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="clr-row">
+  <div class="clr-col-lg-4 clr-col-12" *ngFor="let template of templates; let i=index">
+    <div class="card">
+      <div class="card-header">
+        Template for {{template.Name}}
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          <span>Name:</span> {{template.Name}}<br>
+          <span>Status:</span> {{template.status}}<br>
+          <span>Price:</span> {{template.productPrice}}<br>
+          <span>SellingPoints:</span> {{template.sellingPoints.length}}<br>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button class="btn btn-sm" (click)="GoToEditor(template._id)">Use</button>
+        <button class="btn btn-danger-outline btn-sm" (click)="deleteTemplate(template._id)">delete</button>
+      </div>
+    </div>
+  </div>
+</div>

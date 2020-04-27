@@ -1,0 +1,25 @@
+<div class="login-wrapper">
+  <form class="login">
+    <section class="title">
+      <h3 class="welcome">Welcome to</h3>
+      InterFace
+      <h5 class="hint">Use your Company ID to sign in or create one now</h5>
+    </section>
+    <div class="login-group">
+      <clr-input-container>
+        <label class="clr-sr-only">Username</label>
+          <input clrInput placeholder="Username" name="username" [(ngModel)]="form.username" />
+<!--          <input clrInput type="text" name="username" placeholder="Username" [(ngModel)]="form.username"/>-->
+      </clr-input-container>
+      <clr-password-container>
+        <label class="clr-sr-only">Password</label>
+        <input clrPassword type="password" name="password" placeholder="Password" [(ngModel)]="form.password"/>
+      </clr-password-container>
+      <div class="error active" *ngIf="error" >
+         {{error}} Invalid user name or password
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit(form)">Login</button>
+      <a href="/register" class="signup">Sign up </a>
+    </div>
+  </form>
+</div>

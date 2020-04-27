@@ -1,0 +1,75 @@
+<div class="clr-row noPrint">
+  <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+    <div class="card">
+      <div class="card-header">
+        ToolBar
+      </div>
+      <div class="card-block">
+        <button class="btn btn-primary-outline btn-sm" (click)="backToEditor()">
+          <clr-icon shape="caret" style="transform: rotate(270deg);"></clr-icon>
+          Back to editor
+        </button>
+        <button class="btn btn-primary-outline btn-sm" (click)="openPrintScreen()">
+          <clr-icon shape="printer"></clr-icon>
+          print
+        </button>
+        <div class="card-text">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+    <div class="printContent" id="printContent">
+      <div class="card">
+        <div class="card-block">
+          <div class="productName">{{priceCard?.Name}}</div>
+          <div class="status">{{priceCard?.status}}</div>
+
+          <div class="line">
+            <hr>
+          </div>
+
+          <div class="sellingPoints">
+            <table class="tableSellingPoints">
+              <tr *ngFor="let sellingPoint of priceCard.sellingPoints">
+                <td>{{sellingPoint.nameSellingPoint}}:</td>
+                <td>{{sellingPoint.valueSellingPoint}}:</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="line">
+            <hr>
+          </div>
+          <div class="bottomPage">
+            <div class="prices">
+              <div *ngIf="priceCard.sale" class="salePrice">
+                € {{priceCard.salePrice}}
+              </div>
+
+              <div class="price">
+                <del *ngIf="priceCard.sale" style="text-decoration-color: red;">€ {{priceCard.productPrice}}</del>
+                <div *ngIf="!priceCard.sale">€ {{priceCard.productPrice}}</div>
+              </div>
+            </div>
+
+            <br>
+            <div class="marge" *ngIf="priceCard.marge">
+              marge-regeling ( btw-vrij )
+            </div>
+            <div class="marge" *ngIf="!priceCard.marge">
+              incl. btw
+            </div>
+          </div>
+        </div>
+        <div class="logo">
+          <img src="assets/images/iRN_logo_groot_wit.png" alt="logo">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

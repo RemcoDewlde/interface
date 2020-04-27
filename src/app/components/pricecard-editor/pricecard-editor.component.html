@@ -1,0 +1,110 @@
+<div class="clr-row">
+  <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+    <clr-alert [clrAlertType]="'success'" *ngIf="ok?.ok">
+      <clr-alert-item>
+        <span class="alert-text">
+            {{ok?.message}}
+        </span>
+      </clr-alert-item>
+    </clr-alert>
+
+    <div class="card">
+      <div class="card-header">
+        PriceCard editor
+      </div>
+
+        <form [formGroup]="priceCardForm" clrForm>
+          <clr-input-container>
+            <label>Product name:</label>
+            <input clrInput placeholder="name" class="wider" formControlName="Name" required/>
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Product status:</label>
+            <input clrInput placeholder="status" class="wider" formControlName="status"/>
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Product price:</label>
+            <input clrInput placeholder="price" class="wider" formControlName="productPrice" required/>
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Margin</label>
+            <input clrInput type="checkbox" formControlName="marge" clrCheckbox clrToggle />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Sale</label>
+            <input clrInput type="checkbox" formControlName="sale" clrCheckbox clrToggle/>
+          </clr-input-container>
+
+
+          <clr-input-container *ngIf="priceCardForm.value?.sale">
+            <label>Sale price:</label>
+            <input clrInput placeholder="price" class="wider" formControlName="salePrice"/>
+          </clr-input-container>
+
+
+          <br>
+
+          <div formArrayName="sellingPoints">
+            <button class="btn btn-success btn-sm" (click)="addSellingPoint()"><clr-icon shape="plus"></clr-icon> add sellingPoint</button>
+            <br>
+
+            <clr-datagrid>
+              <clr-dg-column>Name</clr-dg-column>
+              <clr-dg-column>Value</clr-dg-column>
+              <clr-dg-column>Action</clr-dg-column>
+
+
+              <clr-dg-row *ngFor="let sellingpoint of sellingpointsArray.controls; let i = index" [formArrayName]="i">
+                <clr-dg-cell>
+                  <clr-input-container>
+                    <label>Name:</label>
+                    <input class="longinput" clrInput type="text" placeholder="Selling point"
+                           formControlName="nameSellingPoint"
+                           maxlength="40">
+                  </clr-input-container>
+                </clr-dg-cell>
+                <clr-dg-cell>
+                  <clr-input-container>
+                    <label>Value:</label>
+                    <input clrInput class="longinput" type="text" placeholder="Value"
+                           formControlName="valueSellingPoint" maxlength="40">
+                  </clr-input-container>
+                </clr-dg-cell>
+                <clr-dg-cell>
+                  <button class="btn btn-danger-outline" (click)="deleteSellingPoint(i)">
+                    <clr-icon shape="trash"></clr-icon>
+                  </button>
+                </clr-dg-cell>
+              </clr-dg-row>
+
+              <clr-dg-footer>{{sellingpointsArray.controls.length}} sellingpoint(s)</clr-dg-footer>
+            </clr-datagrid>
+          </div>
+
+          <br>
+          <br>
+
+          <div class="btn-group btn-primary btn-icon">
+            <button class="btn" (click)="saveToPreviousPriceCard(priceCardForm.value)">
+              <clr-icon shape="floppy" title="save"></clr-icon>
+              save
+            </button>
+            <button class="btn" (click)="saveAsTemplate(priceCardForm.value)">
+              <clr-icon shape="pinboard" title="save"></clr-icon>
+              save as template
+            </button>
+            <button class="btn" (click)="toPreview(priceCardForm.value)">
+              <clr-icon shape="printer" title="print"></clr-icon>
+              print
+            </button>
+          </div>
+
+        </form>
+        <br>
+      </div>
+    </div>
+  </div>

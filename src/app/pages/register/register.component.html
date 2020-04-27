@@ -1,0 +1,40 @@
+<div class="login-wrapper">
+  <form class="login">
+    <section class="title">
+      <h3 class="welcome">Welcome to</h3>
+      InterFace
+      <h5 class="hint">Register your InterFace account</h5>
+    </section>
+    <div class="login-group">
+      <div class="loader">
+        <div class="spinner spinner-inverse" style="align-content: center" *ngIf="loading">
+          Loading...
+        </div>
+      </div>
+
+      <clr-input-container>
+        <label class="clr-sr-only">Username</label>
+        <input clrInput placeholder="Username" name="username" [(ngModel)]="form.username" required/>
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-sr-only">Email</label>
+        <input clrInput placeholder="Email" name="email" [(ngModel)]="form.email" required/>
+      </clr-input-container>
+      <clr-password-container>
+        <label class="clr-sr-only">Password</label>
+        <input clrPassword type="password" name="password" placeholder="Password" [(ngModel)]="form.password" required/>
+      </clr-password-container>
+      <clr-password-container>
+        <label class="clr-sr-only">Repeat password</label>
+        <input clrPassword type="password" name="password" placeholder="Repeat password"
+               [(ngModel)]="form.repeat_password" required/>
+      </clr-password-container>
+      <div class="error active" *ngIf="error">
+        {{error}}
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit(form)">Sign up</button>
+      <a href="/login" class="signup">Go to login</a>
+
+    </div>
+  </form>
+</div>

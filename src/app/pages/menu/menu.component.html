@@ -1,0 +1,73 @@
+<div class="main-container">
+  <div class="content-container">
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed" class="noPrint">
+
+      <clr-vertical-nav-group routerLinkActive="active" class="noPrint" *ngIf="env.PriceCardMaker">
+        <clr-icon clrVerticalNavIcon shape="printer"></clr-icon>
+        PriceCard maker
+        <clr-vertical-nav-group-children class="noPrint">
+          <a clrVerticalNavLink
+             routerLink="./editor"
+             routerLinkActive="active">
+            Editor
+          </a>
+          <a clrVerticalNavLink
+             routerLink="./pricecard"
+             routerLinkActive="active">
+            Manual
+          </a>
+          <a clrVerticalNavLink
+             routerLink="./pricecardprev"
+             routerLinkActive="active">
+            Previous pricecards
+          </a>
+          <a clrVerticalNavLink
+                 routerLink="./pricetemplate"
+                 routerLinkActive="active">
+          Pricecard templates
+        </a>
+
+        </clr-vertical-nav-group-children>
+      </clr-vertical-nav-group>
+
+      <a clrVerticalNavLink routerLink="./forum" routerLinkActive="active" *ngIf="env.Form">
+        <clr-icon clrVerticalNavIcon shape="note"></clr-icon>
+        Forum
+      </a>
+      <a clrVerticalNavLink routerLink="./guides" routerLinkActive="active" *ngIf="env.Guides">
+        <clr-icon clrVerticalNavIcon shape="book"></clr-icon>
+        Guides
+      </a>
+      <a clrVerticalNavLink routerLink="./monitor" routerLinkActive="active" *ngIf="env.Monitor">
+        <clr-icon clrVerticalNavIcon shape="dashboard"></clr-icon>
+        Monitor
+      </a>
+      <a clrVerticalNavLink routerLink="./users" routerLinkActive="active" *ngIf="env.Users">
+        <clr-icon clrVerticalNavIcon shape="user"></clr-icon>
+        Users
+      </a>
+      <clr-vertical-nav-group
+        routerLinkActive="active" *ngIf="env.Admin">
+        <clr-icon clrVerticalNavIcon shape="administrator"></clr-icon>
+        Admin
+        <clr-vertical-nav-group-children>
+          <a clrVerticalNavLink
+             routerLink="./admin/useredit"
+             routerLinkActive="active">
+            User edit
+          </a>
+          <a clrVerticalNavLink
+             routerLink="./admin/settings"
+             routerLinkActive="active">
+            Settings
+          </a>
+        </clr-vertical-nav-group-children>
+      </clr-vertical-nav-group>
+      <div class="nav-divider"></div>
+      <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">Credit</a>
+    </clr-vertical-nav>
+    <div class="content-area doPrint">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
