@@ -9,7 +9,7 @@ import { AuthService} from '../../services/auth/auth.service';
 })
 export class MenuComponent implements OnInit {
   collapsed: any;
-  env = environment;
+  env = environment.menuItems;
 
   constructor(private authService: AuthService) { }
 

@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   public LoginUser(data): Observable<any> {
-    return this.http.post(`${this.url}/auth/login`, data).pipe( map(user => {
+    return this.http.post(`${this.url}/auth/login`, data).pipe(map(user => {
       localStorage.setItem('currentUser', JSON.stringify(user));
       if (user instanceof User) {
         this.currentUserSubject.next(user);

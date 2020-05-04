@@ -36,6 +36,7 @@ export class PricecardTemplateComponent implements OnInit {
 
   GoToEditor(id){
     this.templateService.getTemplate(id).subscribe((data) => {
+      console.log(data);
       this.router.navigateByUrl('/home/editor', {state: data});
     });
   }

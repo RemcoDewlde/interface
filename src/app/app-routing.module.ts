@@ -13,21 +13,27 @@ import {PricecardTemplateComponent} from './components/PriceCardMaker/pricecard-
 import {PricecardPreviousComponent} from './components/PriceCardMaker/pricecard-previous/pricecard-previous.component';
 import {HomewelkomComponent} from './components/homewelkom/homewelkom.component';
 import {PrintPageComponent} from './components/PriceCardMaker/print-page/print-page.component';
+import {AccountComponent} from './pages/account/account.component';
+import {GuideEditorComponent} from './components/guide-editor/guide-editor.component';
+import {ReadGuideComponent} from './components/read-guide/read-guide.component';
 
 
 const routes: Routes = [
-  {path: '', component: IndexComponent},
+  {path: '', component: LoginPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'account', component: AccountComponent, canActivate: [AuthGuard]},
   {path: 'home', component: MenuComponent, canActivate: [AuthGuard], children: [
-      {path: 'welcome', component: HomewelkomComponent},
-      {path: 'users', component: UsersComponent},
-      {path: 'guides', component: GuidesComponent},
-      {path: 'pricecard', component: PricecardintroComponent},
-      {path: 'editor', component: PricecardEditorComponent},
-      {path: 'pricetemplate', component: PricecardTemplateComponent},
-      {path: 'pricecardprev', component: PricecardPreviousComponent},
-      {path: 'printpage', component: PrintPageComponent}
+      {path: 'welcome', component: HomewelkomComponent, canActivate: [AuthGuard]},
+      {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
+      {path: 'guides', component: GuidesComponent, canActivate: [AuthGuard]},
+      {path: 'guideeditor', component: GuideEditorComponent, canActivate: [AuthGuard]},
+      {path: 'readguide', component: ReadGuideComponent, canActivate: [AuthGuard]},
+      {path: 'pricecard', component: PricecardintroComponent, canActivate: [AuthGuard]},
+      {path: 'editor', component: PricecardEditorComponent, canActivate: [AuthGuard]},
+      {path: 'pricetemplate', component: PricecardTemplateComponent, canActivate: [AuthGuard]},
+      {path: 'pricecardprev', component: PricecardPreviousComponent, canActivate: [AuthGuard]},
+      {path: 'printpage', component: PrintPageComponent, canActivate: [AuthGuard]}
     ]}
 ];
 

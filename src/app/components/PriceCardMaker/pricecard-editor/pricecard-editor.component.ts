@@ -25,8 +25,8 @@ export class PricecardEditorComponent implements OnInit {
         Name: '',
         productPrice: '',
         status: '',
-        marge: '',
-        sale: '',
+        marge: false,
+        sale: false,
         salePrice: '',
         sellingPoints: this.formBuilder.array([])
       }
@@ -79,6 +79,7 @@ export class PricecardEditorComponent implements OnInit {
   }
 
   saveAsTemplate(form) {
+    console.log(form);
     const cop = JSON.parse(JSON.stringify(form));
     this.templateService.postTemplate(cop).subscribe((data) => {
       this.ok = data;

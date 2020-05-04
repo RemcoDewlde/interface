@@ -1,0 +1,39 @@
+<div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+  <div class="card">
+    <div class="card-header">
+      Create a Guide
+    </div>
+
+    <form [formGroup]="guideForm" clrForm (ngSubmit)="SubmitForm()">
+      <clr-input-container>
+        <label>Guide Name:</label>
+        <input clrInput placeholder="Guide name" class="wider" formControlName="guideName" required/>
+      </clr-input-container>
+
+      <clr-textarea-container>
+        <label>Description:</label>
+        <textarea clrTextarea formControlName="description" name="description" class="wider" required></textarea>
+      </clr-textarea-container>
+
+
+      <clr-input-container>
+        <label>Tags:</label>
+        <input clrInput placeholder="tags" #tagInput type="text" class="wider" formControlName="tag"
+               (keyup)="onKeyUp($event)">
+      </clr-input-container>
+
+      <div class="editor-tag" (click)="focusTagInput()">
+          <span class="tag-item" *ngFor="let tag of tags">
+            <span class="label label-info">{{tag}}
+              <span class="badge" (click)="removeTag(tag)">×</span>
+            </span>
+          </span>
+      </div>
+
+
+        <quill-editor #editor formControlName="editor" [styles]="editorStyle"></quill-editor>
+        <button class="btn btn-success" type="submit">Save</button>
+
+    </form>
+  </div>
+</div>

@@ -1,1 +1,58 @@
-<p>guides works!</p>
+<div class="clr-col-lg-12">
+  <div class="clr-row">
+    <div class="clr-col-lg-12 clr-col-12">
+      <div class="card">
+        <div class="card-block">
+          <p class="card-text">
+            <button (click)="goToGuideEditor()" class="btn btn-success">Create new Guide</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clr-col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      Search
+    </div>
+    <div class="card-block">
+      <div class="card-text">
+        <label>
+          <clr-icon shape="search"></clr-icon>
+        </label>
+        <input placeholder="search for title or tag" #search class="clr-input wider" (change)="searchGuide(search.value)"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<clr-datagrid>
+  <clr-dg-column>Guide title</clr-dg-column>
+  <clr-dg-column>Tags</clr-dg-column>
+  <clr-dg-column>Last updated at</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let guide of guides; let i = index" (click)="goToGuide(guide._id)">
+    <clr-dg-cell>{{guide.guideName}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="tag-item" *ngFor="let tag of guide.tags">
+            <span class="label label-info">{{tag}}
+            </span>
+          </span>
+    </clr-dg-cell>
+    <clr-dg-cell>{{guide.updatedAt | date}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination
+      #pagination
+      [clrDgPageSize]="10"
+      (clrDgPageChange)="goToGuide($event)">
+      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Guides per page</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} Guides
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

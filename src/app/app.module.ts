@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { QuillModule} from 'ngx-quill';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,9 @@ import { PricecardTemplateComponent } from './components/PriceCardMaker/pricecar
 import { PricecardPreviousComponent } from './components/PriceCardMaker/pricecard-previous/pricecard-previous.component';
 import { HomewelkomComponent } from './components/homewelkom/homewelkom.component';
 import { PrintPageComponent } from './components/PriceCardMaker/print-page/print-page.component';
+import { AccountComponent } from './pages/account/account.component';
+import { GuideEditorComponent } from './components/guide-editor/guide-editor.component';
+import { ReadGuideComponent } from './components/read-guide/read-guide.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,10 @@ import { PrintPageComponent } from './components/PriceCardMaker/print-page/print
     PricecardTemplateComponent,
     PricecardPreviousComponent,
     HomewelkomComponent,
-    PrintPageComponent
+    PrintPageComponent,
+    AccountComponent,
+    GuideEditorComponent,
+    ReadGuideComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +54,7 @@ import { PrintPageComponent } from './components/PriceCardMaker/print-page/print
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    QuillModule.forRoot()
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
