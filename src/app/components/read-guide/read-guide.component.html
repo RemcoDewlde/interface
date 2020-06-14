@@ -1,1 +1,77 @@
-<p>read-guide works!</p>
+<div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+  <clr-tabs>
+    <clr-tab>
+      <button clrTabLink id="link1">Guide</button>
+      <clr-tab-content id="content1" *clrIfActive>
+        <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+          <div class="card">
+            <quill-view [content]="guide?.guideText"></quill-view>
+          </div>
+        </div>
+      </clr-tab-content>
+    </clr-tab>
+    <clr-tab>
+      <button clrTabLink>Comments
+        <span class="badge badge-info"
+              *ngIf="guide?.comments.length > 0">{{guide?.comments.length}}
+        </span>
+      </button>
+      <clr-tab-content *clrIfActive="false">
+        <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+          <div class="card">
+            <div class="card-block">
+              <div class="card-title">
+                Comments
+              </div>
+              <div class="card-text">
+                <form clrForm (ngSubmit)="guideUpdate(comment.value)" [formGroup]="comments">
+                  <clr-textarea-container>
+                    <label>Comment:</label>
+                    <textarea clrTextarea #comment formControlName="comment" name="description"
+                              class="wider"></textarea>
+                  </clr-textarea-container>
+                  <button class="btn btn-primary" type="submit">Place comment</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="clr-col-lg-12 clr-col-12" *ngFor="let com of guide.comments">
+            <app-comment [comment]="com"
+                         [user]="com.userID"
+                         [isAdmin]="currentUser.role"
+                         (PrimaryButtonEvent)="resolveComment($event)"
+                         (SecondaryButtonEvent)="deleteComment($event)">
+            </app-comment>
+          </div>
+
+        </div>
+      </clr-tab-content>
+    </clr-tab>
+    <clr-tab>
+      <button clrTabLink>Info</button>
+      <clr-tab-content *clrIfActive="false">
+        <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+          <div class="card">
+            <div class="card-block">
+              <div class="card-title">
+                Guide: {{guide?.guideName}}
+              </div>
+              <div class="card-text">
+                Description: {{guide?.guideDesc}}
+                <br>
+                Last updated at: {{guide?.updatedAt | date}}
+                <br>
+                Created at: {{guide?.createdAt | date}}
+                <br>
+                tags: <span class="badge badge-blue" *ngFor="let tag of guide?.tags">{{tag}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </clr-tab-content>
+    </clr-tab>
+  </clr-tabs>
+</div>
+
+

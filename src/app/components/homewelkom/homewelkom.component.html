@@ -1,1 +1,80 @@
-<p>homewelkom works!</p>
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">Welcome {{currentUser.username}}</h4>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-6">
+
+    <div class="card">
+      <div class="card-block">
+        <div class="card-title">
+          Your account status:
+          <div>
+            <div *ngIf="currentUser?.active === false">
+              <clr-icon shape="user" class="has-alert"></clr-icon>
+              Account is not activated
+            </div>
+            <div *ngIf="currentUser?.active === true">
+              <clr-icon shape="success-standard" style="color: forestgreen" class="is-solid"></clr-icon>
+              Your account is activated
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <div class="card-title">
+          Your current role:
+          <div>
+            <clr-icon shape="key" class="is-solid"></clr-icon>
+            {{currentUser?.role}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <div class="card-title">
+          Todays date is:
+          <div>
+            <clr-icon shape="calendar" class="is-solid"></clr-icon>
+            {{now | date}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <div class="card-title">
+          Api status:
+          <div *ngIf="apiStatus?.message === 'Online'">
+            <clr-icon shape="success-standard" style="color: forestgreen" class="is-solid"></clr-icon>
+            {{apiStatus?.message}}
+          </div>
+          <div *ngIf="apiStatus?.message !== 'Online'">
+            <clr-icon shape="error-standard" style="color: red" class="is-solid"></clr-icon>
+            There seems to be a problem!
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="clr-col-6">
+    <div class="card">
+      <div class="card-header">
+        Random photo
+      </div>
+      <div class="card-img">
+        <img src="https://source.unsplash.com/random/800x600">
+      </div>
+    </div>
+  </div>
+</div>

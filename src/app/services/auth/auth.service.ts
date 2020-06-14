@@ -4,7 +4,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../../classes/user/user';
 import {map} from 'rxjs/operators';
-
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +37,12 @@ export class AuthService {
 
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
+  }
+
+  public currentUserData() {
+    const token = this.currentUserValue;
+    const helper = new JwtHelperService();
+    return helper.decodeToken(token.token);
   }
 
   public getMe(): Observable<any> {

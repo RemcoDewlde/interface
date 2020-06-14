@@ -34,24 +34,11 @@
 
 <div class="clr-row">
   <div class="clr-col-lg-4 clr-col-12" *ngFor="let template of pricecards; let i=index">
-    <div class="card">
-      <div class="card-header">
-        Template for {{template.Name}}
-      </div>
-      <div class="card-block">
-        <div class="card-text">
-          <span>Name:</span> {{template.Name}}<br>
-          <span>Status:</span> {{template.status}}<br>
-          <span>Price:</span> {{template.productPrice}}<br>
-          <span>SellingPoints:</span> {{template.sellingPoints.length}}<br>
-        </div>
-      </div>
-
-      <div class="card-footer">
-        <button class="btn btn-sm" (click)="GoToEditor(template._id)">Use</button>
-        <button class="btn btn-danger-outline btn-sm" (click)="deleteTemplate(template._id)">delete</button>
-      </div>
-    </div>
+    <app-pricecard [priceCard]="template"
+                   [title]="'Previous Card'"
+                   (PrimaryButtonEvent)="GoToEditor($event)"
+                   (SecondaryButtonEvent)="deleteTemplate($event)">
+    </app-pricecard>
   </div>
 </div>
 

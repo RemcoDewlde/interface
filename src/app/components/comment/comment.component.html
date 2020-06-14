@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header">
+    {{User?.username}} - {{userRole}}
+    <span style="float:right" class="label label-success" *ngIf="comment.resolved">
+      <clr-icon shape="check"></clr-icon>
+      Resolved
+    </span>
+  </div>
+  <div class="card-block">
+    <div class="card-text">
+      {{comment.comment}}
+    </div>
+  </div>
+  <div class="card-footer" *ngIf="showAdminFeatures">
+    <a class="btn btn-primary" (click)="primaryButtonPress(comment._id)">Resolve</a>
+    <a class="btn btn-danger" (click)="secondaryButtonPress(comment._id)">Delete</a>
+  </div>
+</div>

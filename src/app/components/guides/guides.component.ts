@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {GuidesService} from '../../services/guides/guides.service';
 import {Guides} from '../../classes/guides/guides';
 import {Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-guides',
@@ -10,34 +12,47 @@ import {Router} from '@angular/router';
 })
 export class GuidesComponent implements OnInit {
 
-  constructor(private guidesService: GuidesService, private router: Router) {
+  constructor(private guidesService: GuidesService, private router: Router, private authService: AuthService) {
   }
 
   guides: Guides[];
+  showMakeGuide: boolean;
+  user: any;
+  isAdmin: boolean;
 
   ngOnInit(): void {
     this.guidesService.getAllGuides().subscribe((data) => {
       this.guides = data;
-
     });
+    this.showMakeGuide = environment.GuideOption.showToGuideEditorButton;
+    this.user = this.authService.currentUserData();
+    if (this.user?.role === 'admin'){
+      this.isAdmin = true;
+    }
   }
 
   searchGuide(searchTerm){
     const search = {search: searchTerm};
     if (search.search != null) {
       this.guidesService.searchGuide(search).subscribe((data) => {
-        console.log(data);
         this.guides = data.found;
       });
     }
   }
 
-  goToGuide(e){
-    console.log(e);
+  goToGuide(id){
+    this.router.navigate(['home/guides/', id]);
   }
 
   goToGuideEditor(){
     this.router.navigate(['home/guideeditor']);
+  }
+
+  deleteGuide(id){
+    console.log(id);
+    this.guidesService.deleteGuide(id).subscribe((data) => {
+      console.log(data);
+    });
   }
 
 }

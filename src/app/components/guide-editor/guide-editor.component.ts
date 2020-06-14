@@ -38,8 +38,8 @@ export class GuideEditorComponent implements OnInit {
 
     this.guidesService.postGuide(guide).subscribe((data) => {
       console.log(data);
+     // TODO: do something here
     });
-
   }
 
 

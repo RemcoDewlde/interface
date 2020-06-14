@@ -1,4 +1,4 @@
-<div class="clr-col-lg-12">
+<div class="clr-col-lg-12" *ngIf="showMakeGuide">
   <div class="clr-row">
     <div class="clr-col-lg-12 clr-col-12">
       <div class="card">
@@ -22,37 +22,43 @@
         <label>
           <clr-icon shape="search"></clr-icon>
         </label>
-        <input placeholder="search for title or tag" #search class="clr-input wider" (change)="searchGuide(search.value)"/>
+        <input placeholder="search for title or tag" #search class="clr-input wider"
+               (change)="searchGuide(search.value)"/>
       </div>
     </div>
   </div>
 </div>
 
 
+<div class="clr-col-lg-12">
+  <clr-datagrid>
+    <clr-dg-column>Guide title</clr-dg-column>
+    <clr-dg-column>Tags</clr-dg-column>
+    <clr-dg-column>Last updated at</clr-dg-column>
 
-<clr-datagrid>
-  <clr-dg-column>Guide title</clr-dg-column>
-  <clr-dg-column>Tags</clr-dg-column>
-  <clr-dg-column>Last updated at</clr-dg-column>
-
-  <clr-dg-row *clrDgItems="let guide of guides; let i = index" (click)="goToGuide(guide._id)">
-    <clr-dg-cell>{{guide.guideName}}</clr-dg-cell>
-    <clr-dg-cell>
+    <clr-dg-row *clrDgItems="let guide of guides; let i = index">
+      <clr-dg-action-overflow *ngIf="isAdmin">
+        <button class="action-item">Edit</button>
+        <button class="action-item" (click)="deleteGuide(guide._id)">Delete</button>
+      </clr-dg-action-overflow>
+      <clr-dg-cell (click)="goToGuide(guide._id)">{{guide.guideName}}</clr-dg-cell>
+      <clr-dg-cell (click)="goToGuide(guide._id)">
       <span class="tag-item" *ngFor="let tag of guide.tags">
             <span class="label label-info">{{tag}}
             </span>
           </span>
-    </clr-dg-cell>
-    <clr-dg-cell>{{guide.updatedAt | date}}</clr-dg-cell>
-  </clr-dg-row>
+      </clr-dg-cell>
+      <clr-dg-cell (click)="goToGuide(guide._id)">{{guide.updatedAt | date}}</clr-dg-cell>
+    </clr-dg-row>
 
-  <clr-dg-footer>
-    <clr-dg-pagination
-      #pagination
-      [clrDgPageSize]="10"
-      (clrDgPageChange)="goToGuide($event)">
-      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Guides per page</clr-dg-page-size>
-      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} Guides
-    </clr-dg-pagination>
-  </clr-dg-footer>
-</clr-datagrid>
+    <clr-dg-footer>
+      <clr-dg-pagination
+        #pagination
+        [clrDgPageSize]="10"
+        (clrDgPageChange)="goToGuide($event)">
+        <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Guides per page</clr-dg-page-size>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} Guides
+      </clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>

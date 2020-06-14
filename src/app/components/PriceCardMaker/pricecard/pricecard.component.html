@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header">
+    {{title}} for {{priceCard.Name}}
+  </div>
+  <div class="card-block">
+    <div class="card-text">
+      <span>Name:</span> {{priceCard.Name}}<br>
+      <span>Status:</span> {{priceCard.status}}<br>
+      <span>Price:</span> {{priceCard.productPrice}}<br>
+      <span>SellingPoints:</span> {{priceCard.sellingPoints.length}}<br>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-sm" (click)="primaryButtonPress(priceCard._id)">Use</button>
+    <button class="btn btn-danger-outline btn-sm" (click)="secondaryButtonPress(priceCard._id)">delete</button>
+  </div>
+</div>
