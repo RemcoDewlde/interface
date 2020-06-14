@@ -1,6 +1,6 @@
 <div class="main-container">
   <div class="content-container">
-    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed" class="noPrint">
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed" class="noPrint" *ngIf="currentUser?.active === true">
 
       <clr-vertical-nav-group routerLinkActive="active" class="noPrint" *ngIf="env.PriceCardMaker">
         <clr-icon clrVerticalNavIcon shape="printer"></clr-icon>
@@ -22,21 +22,39 @@
             Previous pricecards
           </a>
           <a clrVerticalNavLink
-                 routerLink="./pricetemplate"
-                 routerLinkActive="active">
-          Pricecard templates
-        </a>
+             routerLink="./pricetemplate"
+             routerLinkActive="active">
+            Pricecard templates
+          </a>
 
         </clr-vertical-nav-group-children>
       </clr-vertical-nav-group>
-
+      <clr-vertical-nav-group routerLinkActive="active" class="noPrint" *ngIf="env.Guides">
+        <clr-icon clrVerticalNavIcon shape="book"></clr-icon>
+        Guides
+        <clr-vertical-nav-group-children class="noPrint">
+          <a clrVerticalNavLink
+             routerLink="./guides"
+             routerLinkActive="active">
+            Read guides
+          </a>
+          <a clrVerticalNavLink
+             routerLink="./guide/editor"
+             routerLinkActive="active"
+             *ngIf="isAdmin">
+            New guide
+          </a>
+          <a clrVerticalNavLink
+             routerLink="./guide/manual"
+             routerLinkActive="active"
+             *ngIf="isAdmin">
+            Manual
+          </a>
+        </clr-vertical-nav-group-children>
+      </clr-vertical-nav-group>
       <a clrVerticalNavLink routerLink="./forum" routerLinkActive="active" *ngIf="env.Form">
         <clr-icon clrVerticalNavIcon shape="note"></clr-icon>
         Forum
-      </a>
-      <a clrVerticalNavLink routerLink="./guides" routerLinkActive="active" *ngIf="env.Guides">
-        <clr-icon clrVerticalNavIcon shape="book"></clr-icon>
-        Guides
       </a>
       <a clrVerticalNavLink routerLink="./monitor" routerLinkActive="active" *ngIf="env.Monitor">
         <clr-icon clrVerticalNavIcon shape="dashboard"></clr-icon>
@@ -47,7 +65,7 @@
         Users
       </a>
       <clr-vertical-nav-group
-        routerLinkActive="active" *ngIf="env.Admin">
+        routerLinkActive="active" *ngIf="isAdmin">
         <clr-icon clrVerticalNavIcon shape="administrator"></clr-icon>
         Admin
         <clr-vertical-nav-group-children>

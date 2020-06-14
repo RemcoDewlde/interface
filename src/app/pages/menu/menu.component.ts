@@ -9,12 +9,18 @@ import { AuthService} from '../../services/auth/auth.service';
 })
 export class MenuComponent implements OnInit {
   collapsed: any;
+  currentUser: any;
+  isAdmin = false;
   env = environment.menuItems;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.collapsed = true;
+    this.collapsed = false;
+    this.currentUser = this.authService.currentUserData();
+    if (this.currentUser.role === 'admin'){
+      this.isAdmin = true;
+    }
   }
 
 }

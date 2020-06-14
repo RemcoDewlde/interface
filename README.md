@@ -18,10 +18,10 @@
 - [ ] change profile picture
 
 ## guides
-- [ ] add guide
-- [ ] delete guide
+- [X] add guide
+- [X] delete guide
 - [ ] edit guide
-- [ ] read guide
+- [X] read guide
 
 ## priceCard maker
 - [ ] template created by

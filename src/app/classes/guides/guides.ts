@@ -1,3 +1,5 @@
+import {User} from '../user/user';
+
 export class Guides {
   id: string;
   createdAt: string;
@@ -9,7 +11,8 @@ export class Guides {
     tag: string
   }];
   comments: [{
-    userID: string;
+    _id: string;
+    userID: User['_id'];
     comment: string;
     resolved: boolean;
   }];

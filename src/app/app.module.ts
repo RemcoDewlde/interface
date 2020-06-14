@@ -25,6 +25,9 @@ import { PrintPageComponent } from './components/PriceCardMaker/print-page/print
 import { AccountComponent } from './pages/account/account.component';
 import { GuideEditorComponent } from './components/guide-editor/guide-editor.component';
 import { ReadGuideComponent } from './components/read-guide/read-guide.component';
+import { PricecardComponent } from './components/PriceCardMaker/pricecard/pricecard.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { GuideManualComponent } from './components/guide-manual/guide-manual.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { ReadGuideComponent } from './components/read-guide/read-guide.component
     PrintPageComponent,
     AccountComponent,
     GuideEditorComponent,
-    ReadGuideComponent
+    ReadGuideComponent,
+    PricecardComponent,
+    CommentComponent,
+    GuideManualComponent
   ],
   imports: [
     BrowserModule,

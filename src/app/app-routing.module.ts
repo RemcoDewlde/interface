@@ -16,6 +16,7 @@ import {PrintPageComponent} from './components/PriceCardMaker/print-page/print-p
 import {AccountComponent} from './pages/account/account.component';
 import {GuideEditorComponent} from './components/guide-editor/guide-editor.component';
 import {ReadGuideComponent} from './components/read-guide/read-guide.component';
+import {GuideManualComponent} from './components/guide-manual/guide-manual.component';
 
 
 const routes: Routes = [
@@ -27,8 +28,9 @@ const routes: Routes = [
       {path: 'welcome', component: HomewelkomComponent, canActivate: [AuthGuard]},
       {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
       {path: 'guides', component: GuidesComponent, canActivate: [AuthGuard]},
-      {path: 'guideeditor', component: GuideEditorComponent, canActivate: [AuthGuard]},
-      {path: 'readguide', component: ReadGuideComponent, canActivate: [AuthGuard]},
+      {path: 'guide/editor', component: GuideEditorComponent, canActivate: [AuthGuard]},
+      {path: 'guide/manual', component: GuideManualComponent, canActivate: [AuthGuard]},
+      {path: 'guides/:id', component: ReadGuideComponent, canActivate: [AuthGuard]},
       {path: 'pricecard', component: PricecardintroComponent, canActivate: [AuthGuard]},
       {path: 'editor', component: PricecardEditorComponent, canActivate: [AuthGuard]},
       {path: 'pricetemplate', component: PricecardTemplateComponent, canActivate: [AuthGuard]},

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  weatherApiKey: '84e35204e3d6853a9f19ed8f415bca8f',
   api_url: '192.168.178.129:3000',
   menuItems: {
     // enable/disable menu items
@@ -13,6 +14,9 @@ export const environment = {
     Monitor: true,
     Users: true,
     Admin: true
+  },
+  GuideOption: {
+    showToGuideEditorButton: false,
   }
 };
 
