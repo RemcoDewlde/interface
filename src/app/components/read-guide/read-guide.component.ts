@@ -5,8 +5,7 @@ import {Guides} from '../../classes/guides/guides';
 import {FormBuilder} from '@angular/forms';
 import {AuthService} from '../../services/auth/auth.service';
 import {User} from '../../classes/user/user';
-import {createBrowserLoggingCallback} from '@angular-devkit/build-angular/src/browser';
-import {log} from 'util';
+import {privateEntriesToIndex} from '@angular/compiler-cli/src/metadata/index_writer';
 
 @Component({
   selector: 'app-read-guide',
@@ -56,8 +55,7 @@ export class ReadGuideComponent implements OnInit {
 
     // @ts-ignore
     updatedGuide.comments.push(comment);
-    this.guidesService.updateGuide(updatedGuide).subscribe((data) => {
-      console.log(data);
+    this.guidesService.updateGuide(updatedGuide).subscribe(() => {
       // TODO: make pop-up when done or error
     });
   }
@@ -71,8 +69,7 @@ export class ReadGuideComponent implements OnInit {
       return obj;
     });
 
-    this.guidesService.updateGuide(this.guide).subscribe((data) => {
-      console.log(data);
+    this.guidesService.updateGuide(this.guide).subscribe(() => {
       // TODO: make pop-up when done or error
     });
   }
@@ -82,11 +79,19 @@ export class ReadGuideComponent implements OnInit {
     this.guide.comments = this.guide.comments.filter((obj) => {
       return obj._id !== id;
     });
-    this.guidesService.updateGuide(this.guide).subscribe((data) => {
-      console.log(data);
+    this.guidesService.updateGuide(this.guide).subscribe(() => {
       // TODO: make pop-up when done or error
     });
+  }
 
+  goToGuideEditor(id) {
+    this.router.navigate(['home/guide/editor/', id]);
+  }
+
+  deleteGuide(id) {
+    this.guidesService.deleteGuide(id).subscribe((data) => {
+      this.router.navigate(['home/guides']);
+    });
   }
 
 }

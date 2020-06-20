@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {find, pull} from 'lodash';
 import {GuidesService} from '../../services/guides/guides.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
@@ -13,12 +14,18 @@ export class GuideEditorComponent implements OnInit {
   @ViewChild('tagInput') tagInputRef: ElementRef;
   guideForm: any;
   tags: string[] = [];
+  error = false;
+  editorMode = false;
+  guide: any;
 
   editorStyle = {
     height: '40vh'
   };
 
-  constructor(private formBuilder: FormBuilder, private guidesService: GuidesService) {
+  constructor(private formBuilder: FormBuilder,
+              private guidesService: GuidesService,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -28,20 +35,53 @@ export class GuideEditorComponent implements OnInit {
       description: '',
       editor: '',
     });
+
+    if (this.route.snapshot.paramMap.get('id') === undefined) {
+      // if there is no guide id return to guides home page
+      this.router.navigate(['home/guides']);
+    } else {
+      // get the current guide
+      this.guidesService.getGuide(this.route.snapshot.paramMap.get('id')).subscribe((data) => {
+        this.guide = data.found;
+        this.editorMode = true;
+        this.guideForm.get('guideName').setValue(this.guide.guideName);
+        this.guideForm.get('description').setValue(this.guide.guideDesc);
+        this.guideForm.get('editor').setValue(this.guide.guideText);
+
+        // this adds the tags for the form when editing
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < data.found.tags.length; i++) {
+          this.addTag(data.found.tags[i]);
+        }
+      });
+    }
   }
 
-  SubmitForm(){
+  SubmitForm() {
     const guide = {
       form: this.guideForm.value,
       tags: this.tags
     };
 
-    this.guidesService.postGuide(guide).subscribe((data) => {
-      console.log(data);
-     // TODO: do something here
-    });
-  }
+    if (this.editorMode === false) {
+      this.guidesService.postGuide(guide).subscribe((data) => {
+        if (data.ok === 'Guide saved') {
+          this.router.navigate([`/home/guides/${data.body._id}`]);
+        } else {
+          this.error = true;
+        }
+      });
+    } else {
+      this.guide.guideName = this.guideForm.value.guideName;
+      this.guide.guideDesc = this.guideForm.value.description;
+      this.guide.guideText = this.guideForm.value.editor;
+      this.guide.tags = this.tags;
 
+      this.guidesService.updateGuide(this.guide).subscribe((data) => {
+        this.router.navigate(['home/guides/', this.guide._id]);
+      });
+    }
+  }
 
   focusTagInput(): void {
     this.tagInputRef.nativeElement.focus();
@@ -76,7 +116,4 @@ export class GuideEditorComponent implements OnInit {
       this.tags.push(tag);
     }
   }
-
-
-
 }

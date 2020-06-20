@@ -1,4 +1,18 @@
 <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="alert-text">
+                    Something went wrong!
+                </span>
+      </div>
+    </div>
+  </div>
+
   <div class="card">
     <div class="card-header">
       Create a Guide
@@ -31,8 +45,8 @@
       </div>
 
 
-        <quill-editor #editor formControlName="editor" [styles]="editorStyle"></quill-editor>
-        <button class="btn btn-success" type="submit">Save</button>
+      <quill-editor #editor formControlName="editor" [styles]="editorStyle"></quill-editor>
+      <button class="btn btn-success" type="submit">Save</button>
 
     </form>
   </div>

@@ -19,6 +19,8 @@ export class GuidesComponent implements OnInit {
   showMakeGuide: boolean;
   user: any;
   isAdmin: boolean;
+  deleted: boolean;
+  error: boolean;
 
   ngOnInit(): void {
     this.guidesService.getAllGuides().subscribe((data) => {
@@ -26,12 +28,12 @@ export class GuidesComponent implements OnInit {
     });
     this.showMakeGuide = environment.GuideOption.showToGuideEditorButton;
     this.user = this.authService.currentUserData();
-    if (this.user?.role === 'admin'){
+    if (this.user?.role === 'admin') {
       this.isAdmin = true;
     }
   }
 
-  searchGuide(searchTerm){
+  searchGuide(searchTerm) {
     const search = {search: searchTerm};
     if (search.search != null) {
       this.guidesService.searchGuide(search).subscribe((data) => {
@@ -40,18 +42,25 @@ export class GuidesComponent implements OnInit {
     }
   }
 
-  goToGuide(id){
+  goToGuide(id) {
     this.router.navigate(['home/guides/', id]);
   }
 
-  goToGuideEditor(){
-    this.router.navigate(['home/guideeditor']);
+  goToGuideEditor(id) {
+    this.router.navigate(['home/guide/editor/', id]);
   }
 
-  deleteGuide(id){
-    console.log(id);
+  goToEditor(){
+    this.router.navigate(['home/guide/']);
+  }
+
+  deleteGuide(id) {
     this.guidesService.deleteGuide(id).subscribe((data) => {
-      console.log(data);
+      if (data.success) {
+        this.deleted = true;
+      } else {
+        this.error = true;
+      }
     });
   }
 

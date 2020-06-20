@@ -4,10 +4,32 @@
       <div class="card">
         <div class="card-block">
           <p class="card-text">
-            <button (click)="goToGuideEditor()" class="btn btn-success">Create new Guide</button>
+            <button (click)="goToEditor()" class="btn btn-success">Create new Guide</button>
           </p>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-success" role="alert" *ngIf="deleted">
+  <div class="alert-items">
+    <div class="alert-item static">
+      <div class="alert-icon-wrapper">
+        <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+      </div>
+      <span class="alert-text">Guide successfully deleted</span>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="error">
+  <div class="alert-items">
+    <div class="alert-item static">
+      <div class="alert-icon-wrapper">
+        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="alert-text">Something went wrong</span>
     </div>
   </div>
 </div>
@@ -38,7 +60,7 @@
 
     <clr-dg-row *clrDgItems="let guide of guides; let i = index">
       <clr-dg-action-overflow *ngIf="isAdmin">
-        <button class="action-item">Edit</button>
+        <button class="action-item" (click)="goToGuideEditor(guide._id)" >Edit</button>
         <button class="action-item" (click)="deleteGuide(guide._id)">Delete</button>
       </clr-dg-action-overflow>
       <clr-dg-cell (click)="goToGuide(guide._id)">{{guide.guideName}}</clr-dg-cell>

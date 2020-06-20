@@ -29,6 +29,7 @@ const routes: Routes = [
       {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
       {path: 'guides', component: GuidesComponent, canActivate: [AuthGuard]},
       {path: 'guide/editor', component: GuideEditorComponent, canActivate: [AuthGuard]},
+      {path: 'guide/editor/:id', component: GuideEditorComponent, canActivate: [AuthGuard]},
       {path: 'guide/manual', component: GuideManualComponent, canActivate: [AuthGuard]},
       {path: 'guides/:id', component: ReadGuideComponent, canActivate: [AuthGuard]},
       {path: 'pricecard', component: PricecardintroComponent, canActivate: [AuthGuard]},

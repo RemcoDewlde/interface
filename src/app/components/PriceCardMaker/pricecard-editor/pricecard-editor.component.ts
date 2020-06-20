@@ -79,7 +79,6 @@ export class PricecardEditorComponent implements OnInit {
   }
 
   saveAsTemplate(form) {
-    console.log(form);
     const cop = JSON.parse(JSON.stringify(form));
     this.templateService.postTemplate(cop).subscribe((data) => {
       this.ok = data;
