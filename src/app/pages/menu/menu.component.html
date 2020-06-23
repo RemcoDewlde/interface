@@ -7,22 +7,22 @@
         PriceCard maker
         <clr-vertical-nav-group-children class="noPrint">
           <a clrVerticalNavLink
-             routerLink="./editor"
+             routerLink="/pricecard/editor"
              routerLinkActive="active">
             Editor
           </a>
           <a clrVerticalNavLink
-             routerLink="./pricecard"
+             routerLink="/pricecard/pricecard"
              routerLinkActive="active">
             Manual
           </a>
           <a clrVerticalNavLink
-             routerLink="./pricecardprev"
+             routerLink="/pricecard/pricecardprev"
              routerLinkActive="active">
             Previous pricecards
           </a>
           <a clrVerticalNavLink
-             routerLink="./pricetemplate"
+             routerLink="/pricecard/pricetemplate"
              routerLinkActive="active">
             Pricecard templates
           </a>
@@ -34,18 +34,18 @@
         Guides
         <clr-vertical-nav-group-children class="noPrint">
           <a clrVerticalNavLink
-             routerLink="./guides"
+             routerLink="/guides/guides"
              routerLinkActive="active">
             Read guides
           </a>
           <a clrVerticalNavLink
-             routerLink="./guide/editor"
+             routerLink="/guides/guide/editor"
              routerLinkActive="active"
              *ngIf="isAdmin">
             New guide
           </a>
           <a clrVerticalNavLink
-             routerLink="./guide/manual"
+             routerLink="/guides/guide/manual"
              routerLinkActive="active"
              *ngIf="isAdmin">
             Manual
@@ -70,9 +70,10 @@
         Admin
         <clr-vertical-nav-group-children>
           <a clrVerticalNavLink
-             routerLink="./admin/useredit"
+             routerLink="/admin/users"
+
              routerLinkActive="active">
-            User edit
+            Users
           </a>
           <a clrVerticalNavLink
              routerLink="./admin/settings"

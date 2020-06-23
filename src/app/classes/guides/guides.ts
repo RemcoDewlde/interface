@@ -1,7 +1,7 @@
 import {User} from '../user/user';
 
 export class Guides {
-  id: string;
+  _id: string;
   createdAt: string;
   updatedAt: string;
   guideName: string;

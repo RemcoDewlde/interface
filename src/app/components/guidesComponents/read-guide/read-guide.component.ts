@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {GuidesService} from '../../services/guides/guides.service';
-import {Guides} from '../../classes/guides/guides';
+import {GuidesService} from '../../../services/guides/guides.service';
+import {Guides} from '../../../classes/guides/guides';
 import {FormBuilder} from '@angular/forms';
-import {AuthService} from '../../services/auth/auth.service';
-import {User} from '../../classes/user/user';
-import {privateEntriesToIndex} from '@angular/compiler-cli/src/metadata/index_writer';
+import {AuthService} from '../../../services/auth/auth.service';
+import {User} from '../../../classes/user/user';
 
 @Component({
   selector: 'app-read-guide',
@@ -16,6 +15,7 @@ export class ReadGuideComponent implements OnInit {
 
   guide: Guides;
   currentUser: User;
+  isAdmin: boolean;
   comments;
 
   constructor(private route: ActivatedRoute,
@@ -29,7 +29,7 @@ export class ReadGuideComponent implements OnInit {
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.get('id') === undefined) {
       // if there is no guide id return to guides home page
-      this.router.navigate(['home/guides']);
+      this.router.navigate(['guides/guides']);
     } else {
       // get the current guide
       this.guidesService.getGuide(this.route.snapshot.paramMap.get('id')).subscribe((data) => {
@@ -41,6 +41,7 @@ export class ReadGuideComponent implements OnInit {
 
       // get the current user for posting comments
       this.currentUser = this.authService.currentUserData();
+      this.isAdmin = this.currentUser.role === 'admin';
     }
   }
 
@@ -85,12 +86,12 @@ export class ReadGuideComponent implements OnInit {
   }
 
   goToGuideEditor(id) {
-    this.router.navigate(['home/guide/editor/', id]);
+    this.router.navigate(['guides/guide/editor/', id]);
   }
 
   deleteGuide(id) {
-    this.guidesService.deleteGuide(id).subscribe((data) => {
-      this.router.navigate(['home/guides']);
+    this.guidesService.deleteGuide(id).subscribe(() => {
+      this.router.navigate(['guides/guides']);
     });
   }
 

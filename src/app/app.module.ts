@@ -14,7 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './pages/register/register.component';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { UsersComponent } from './components/users/users.component';
-import { GuidesComponent } from './components/guides/guides.component';
+import { GuidesComponent } from './components/guidesComponents/guides/guides.component';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import { PricecardintroComponent } from './components/PriceCardMaker/pricecardintro/pricecardintro.component';
 import { PricecardEditorComponent } from './components/PriceCardMaker/pricecard-editor/pricecard-editor.component';
@@ -23,11 +23,12 @@ import { PricecardPreviousComponent } from './components/PriceCardMaker/pricecar
 import { HomewelkomComponent } from './components/homewelkom/homewelkom.component';
 import { PrintPageComponent } from './components/PriceCardMaker/print-page/print-page.component';
 import { AccountComponent } from './pages/account/account.component';
-import { GuideEditorComponent } from './components/guide-editor/guide-editor.component';
-import { ReadGuideComponent } from './components/read-guide/read-guide.component';
+import { GuideEditorComponent } from './components/guidesComponents/guide-editor/guide-editor.component';
+import { ReadGuideComponent } from './components/guidesComponents/read-guide/read-guide.component';
 import { PricecardComponent } from './components/PriceCardMaker/pricecard/pricecard.component';
-import { CommentComponent } from './components/comment/comment.component';
-import { GuideManualComponent } from './components/guide-manual/guide-manual.component';
+import { CommentComponent } from './components/guidesComponents/comment/comment.component';
+import { GuideManualComponent } from './components/guidesComponents/guide-manual/guide-manual.component';
+import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-edit.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { GuideManualComponent } from './components/guide-manual/guide-manual.com
     ReadGuideComponent,
     PricecardComponent,
     CommentComponent,
-    GuideManualComponent
+    GuideManualComponent,
+    AdminUserEditComponent
   ],
   imports: [
     BrowserModule,

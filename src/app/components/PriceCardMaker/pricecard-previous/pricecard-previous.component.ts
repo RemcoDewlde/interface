@@ -34,13 +34,13 @@ export class PricecardPreviousComponent implements OnInit {
 
   GoToEditor(id){
     this.previousCardsService.getPriceCard(id).subscribe((data) => {
-      this.router.navigateByUrl('/home/editor', {state: data});
+      this.router.navigateByUrl('/pricecard/editor', {state: data});
     });
   }
 
   deleteTemplate(id){
     // TODO: add are you sure model
-    this.previousCardsService.deletePriceCard(id).subscribe((data) => {
+    this.previousCardsService.deletePriceCard(id).subscribe(() => {
       this.getTemplates();
     });
   }

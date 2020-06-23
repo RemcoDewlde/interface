@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {find, pull} from 'lodash';
-import {GuidesService} from '../../services/guides/guides.service';
+import {GuidesService} from '../../../services/guides/guides.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 
@@ -35,11 +35,7 @@ export class GuideEditorComponent implements OnInit {
       description: '',
       editor: '',
     });
-
-    if (this.route.snapshot.paramMap.get('id') === undefined) {
-      // if there is no guide id return to guides home page
-      this.router.navigate(['home/guides']);
-    } else {
+    if (this.route.snapshot.paramMap.get('id')) {
       // get the current guide
       this.guidesService.getGuide(this.route.snapshot.paramMap.get('id')).subscribe((data) => {
         this.guide = data.found;
@@ -66,7 +62,7 @@ export class GuideEditorComponent implements OnInit {
     if (this.editorMode === false) {
       this.guidesService.postGuide(guide).subscribe((data) => {
         if (data.ok === 'Guide saved') {
-          this.router.navigate([`/home/guides/${data.body._id}`]);
+          this.router.navigate([`/guides/guides/${data.body._id}`]);
         } else {
           this.error = true;
         }
@@ -78,7 +74,7 @@ export class GuideEditorComponent implements OnInit {
       this.guide.tags = this.tags;
 
       this.guidesService.updateGuide(this.guide).subscribe((data) => {
-        this.router.navigate(['home/guides/', this.guide._id]);
+        this.router.navigate(['guidestes/guides/', this.guide._id]);
       });
     }
   }

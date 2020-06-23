@@ -20,14 +20,17 @@
 ## guides
 - [X] add guide
 - [X] delete guide
-- [ ] edit guide
+- [X] edit guide
 - [X] read guide
+- [ ] Make routing names better
+- [ ] Add modals when deleting
 
 ## priceCard maker
 - [ ] template created by
 - [ ] pricecard created by
 - [ ] print settings (custom css)
 - [ ] delete only as admin?
+- [ ] Add modals when deleting
 
 ## feature request
 - [ ] create feature

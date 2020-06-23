@@ -36,13 +36,13 @@ export class PricecardTemplateComponent implements OnInit {
 
   GoToEditor(id){
     this.templateService.getTemplate(id).subscribe((data) => {
-      this.router.navigateByUrl('/home/editor', {state: data});
+      this.router.navigateByUrl('/pricecard/editor', {state: data});
     });
   }
 
   deleteTemplate(id){
    // TODO: add are you sure model
-    this.templateService.deleteTemplate(id).subscribe((data) => {
+    this.templateService.deleteTemplate(id).subscribe(() => {
       this.getTemplates();
     });
   }

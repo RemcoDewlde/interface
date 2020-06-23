@@ -93,6 +93,6 @@ export class PricecardEditorComponent implements OnInit {
   }
 
   toPreview(form) {
-    this.router.navigateByUrl('/home/printpage', {state : form});
+    this.router.navigateByUrl('/pricecard/printpage', {state : form});
   }
 }

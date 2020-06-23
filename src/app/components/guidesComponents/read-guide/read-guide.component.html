@@ -30,6 +30,7 @@
                     <textarea clrTextarea #comment formControlName="comment" name="description"
                               class="wider"></textarea>
                   </clr-textarea-container>
+                  <br>
                   <button class="btn btn-primary" type="submit">Place comment</button>
                 </form>
               </div>
@@ -65,7 +66,7 @@
                 Created at: {{guide?.createdAt | date}}
                 <br>
                 tags: <span class="badge badge-blue" *ngFor="let tag of guide?.tags">{{tag}}</span>
-                <div *ngIf="currentUser?.role === 'admin'">
+                <div *ngIf="isAdmin">
                   <br>
                   <button class="btn btn-primary btn-sm" (click)="goToGuideEditor(guide?._id)">Edit</button>
                   <button class="btn btn-danger btn-sm" (click)="deleteGuide(guide?._id)" >Delete</button>

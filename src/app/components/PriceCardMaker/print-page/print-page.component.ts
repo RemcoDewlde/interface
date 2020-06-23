@@ -22,7 +22,7 @@ export class PrintPageComponent implements OnInit {
   }
 
   backToEditor() {
-    this.router.navigateByUrl('/home/editor', {state: this.priceCard});
+    this.router.navigateByUrl('/pricecard/editor', {state: this.priceCard});
   }
 
 }
