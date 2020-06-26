@@ -1,6 +1,7 @@
 import {User} from '../user/user';
 
 export class Guides {
+  // tslint:disable-next-line:variable-name
   _id: string;
   createdAt: string;
   updatedAt: string;

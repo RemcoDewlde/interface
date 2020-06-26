@@ -28,7 +28,8 @@ import { ReadGuideComponent } from './components/guidesComponents/read-guide/rea
 import { PricecardComponent } from './components/PriceCardMaker/pricecard/pricecard.component';
 import { CommentComponent } from './components/guidesComponents/comment/comment.component';
 import { GuideManualComponent } from './components/guidesComponents/guide-manual/guide-manual.component';
-import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-edit.component';
+import { AdminUserComponent } from './components/admin-user-edit/admin-user-edit.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-
     PricecardComponent,
     CommentComponent,
     GuideManualComponent,
-    AdminUserEditComponent
+    AdminUserComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

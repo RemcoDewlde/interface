@@ -16,7 +16,7 @@ import {AccountComponent} from './pages/account/account.component';
 import {GuideEditorComponent} from './components/guidesComponents/guide-editor/guide-editor.component';
 import {ReadGuideComponent} from './components/guidesComponents/read-guide/read-guide.component';
 import {GuideManualComponent} from './components/guidesComponents/guide-manual/guide-manual.component';
-import {AdminUserEditComponent} from './components/admin-user-edit/admin-user-edit.component';
+import {AdminUserComponent} from './components/admin-user-edit/admin-user-edit.component';
 
 
 const routes: Routes = [
@@ -29,7 +29,7 @@ const routes: Routes = [
       {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
     ]},
   {path: 'admin', component: MenuComponent, canActivate: [AuthGuard], children: [
-      {path: 'users', component: AdminUserEditComponent, canActivate: [AuthGuard]}
+      {path: 'users', component: AdminUserComponent, canActivate: [AuthGuard]}
     ]},
   {path: 'pricecard', component: MenuComponent, canActivate: [AuthGuard], children: [
       {path: 'pricecard', component: PricecardintroComponent, canActivate: [AuthGuard]},

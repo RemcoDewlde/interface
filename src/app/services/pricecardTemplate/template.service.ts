@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PriceCard} from '../../classes/pricecard/price-card';
+import {Template} from '@angular/compiler/src/render3/r3_ast';
 
 
 @Injectable({
@@ -30,7 +31,7 @@ export class TemplateService {
     return this.http.delete(this.url + `/api/v1/templates/${id}`);
   }
 
-  public searchTemplate(search): Observable<any>{
-    return this.http.post(this.url + `/api/v1/templates/search`, search );
+  public searchTemplate(search): Observable<PriceCard[]>{
+    return this.http.post<PriceCard[]>(this.url + `/api/v1/templates/search`, search );
   }
 }

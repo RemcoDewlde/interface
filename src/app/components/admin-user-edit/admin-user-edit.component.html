@@ -1,1 +1,20 @@
-<p>admin-user-edit works!</p>
+<app-search (SearchEventEmitter)="searchUsers($event)" searchForTitle="users"></app-search>
+
+<clr-datagrid>
+  <clr-dg-column>Username</clr-dg-column>
+  <clr-dg-column>email</clr-dg-column>
+  <clr-dg-column>Role</clr-dg-column>
+  <clr-dg-column>Active</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of users; let i = index">
+    <clr-dg-action-overflow>
+      <button class="action-item">Edit</button>
+      <button class="action-item">deactivate</button>
+    </clr-dg-action-overflow>
+    <clr-dg-cell>{{user.username}}</clr-dg-cell>
+    <clr-dg-cell>{{user.email}}</clr-dg-cell>
+    <clr-dg-cell>{{user.role}}</clr-dg-cell>
+    <clr-dg-cell>{{user.active}}</clr-dg-cell>
+  </clr-dg-row>
+
+</clr-datagrid>

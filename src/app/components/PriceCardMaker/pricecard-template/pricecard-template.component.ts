@@ -28,8 +28,8 @@ export class PricecardTemplateComponent implements OnInit {
   searchTemplate(searchTerm){
     const search = {search: searchTerm};
     if (search.search != null) {
-      this.templateService.searchTemplate(search).subscribe((data) => {
-        this.templates = data.found;
+      this.templateService.searchTemplate(search).subscribe((templates) => {
+        this.templates = templates;
       });
     }
   }

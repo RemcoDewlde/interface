@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: '192.168.178.129:3000',
+  api_url: '0.0.0.0:3000',
   menuItems: {
     // enable/disable menu items
     PriceCardMaker: true,

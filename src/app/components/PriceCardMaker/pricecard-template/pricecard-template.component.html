@@ -1,36 +1,4 @@
-<div class="clr-col-lg-12">
-  <div class="card">
-    <div class="card-header">
-      Search
-    </div>
-    <div class="card-block">
-      <div class="card-text">
-        <label>
-          <clr-icon shape="search"></clr-icon>
-        </label>
-        <input placeholder="search" #search class="clr-input wider" (change)="searchTemplate(search.value)"/>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="clr-row clr-justify-content-center warning" *ngIf="search.value.length >= 1 && templates.length <= 0 ">
-  <div class="clr-col-lg-8 clr-col-12">
-    <div class="alert alert-info" role="alert">
-      <div class="alert-items">
-        <div class="alert-item static">
-          <div class="alert-icon-wrapper">
-            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
-          </div>
-          <span class="alert-text">
-            It looks like there are no results for: {{search.value}}
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+<app-search searchForTitle="templates" (SearchEventEmitter)="searchTemplate($event)"></app-search>
 
 <div class="clr-row">
   <div class="clr-col-lg-4 clr-col-12" *ngFor="let template of templates; let i=index">
