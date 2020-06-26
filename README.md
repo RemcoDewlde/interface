@@ -1,9 +1,17 @@
-# TODO
+# Interface
+[![CodeFactor](https://www.codefactor.io/repository/github/remcodewlde/interface/badge?s=aae9930a525e1af3138ca0485ac2750343cfec44)](https://www.codefactor.io/repository/github/remcodewlde/interface)
 
-## Bugs
+
+
+
+
+
+## TODO
+
+### Bugs
 - [ ] if jwt token is expired the login page cannot login the first time, after reloading it will work again
 
-## Auth
+### Auth
 - [ ] Add admin
 - [ ] admin create new user
 - [ ] admin delete user
@@ -11,13 +19,13 @@
 - [ ] reactivate user
 - [ ] create admin on startup
 
-## users
+### users
 - [ ] change username
 - [ ] change email
 - [ ] change password
 - [ ] change profile picture
 
-## guides
+### guides
 - [X] add guide
 - [X] delete guide
 - [X] edit guide
@@ -25,24 +33,23 @@
 - [ ] Make routing names better
 - [ ] Add modals when deleting
 
-## priceCard maker
+### priceCard maker
 - [ ] template created by
 - [ ] pricecard created by
 - [ ] print settings (custom css)
 - [ ] delete only as admin?
 - [ ] Add modals when deleting
 
-## feature request
+### feature request
 - [ ] create feature
 - [ ] message dev / mail
 
-# ng router
+### ng router
 -  make better routes for 
     - [ ] priceCard maker
     - [ ] Guides
 
-# checklist
-# files
-# Wishlist
+### checklist
+##### Wishlist
 
 

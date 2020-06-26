@@ -12,7 +12,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { IndexComponent } from './pages/index/index.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './pages/register/register.component';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { UsersComponent } from './components/users/users.component';
 import { GuidesComponent } from './components/guidesComponents/guides/guides.component';
 import {JwtInterceptor} from './helpers/jwt.interceptor';

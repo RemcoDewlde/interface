@@ -16,7 +16,7 @@ export class UserService {
   private url = `http://${environment.api_url}`;
 
   public getUser(id): Observable<any> {
-    return this.http.get<PriceCard>(this.url + `/api/v1/users/${id}`);
+    return this.http.get<User>(this.url + `/api/v1/users/${id}`);
   }
 
   public getAllUsers(): Observable<User[]> {
@@ -30,6 +30,4 @@ export class UserService {
   public getApiStatus(): Observable<any> {
     return this.http.get(this.url + `/api/v1/online`);
   }
-
-
 }
