@@ -1,18 +1,18 @@
 <div class="noPrint">
   <header class="header header-6">
     <div class="branding">
-      <a href="/" class="nav-link">
+      <a routerlink="/" class="nav-link">
         <clr-icon shape="network-globe"></clr-icon>
         <span class="title">InterFace</span>
       </a>
     </div>
 
     <div class="header-nav" *ngIf="user?.username">
-      <a href="/home/welcome" class="active nav-link"><span class="nav-text">Dashboard</span></a>
+      <a routerLink="/home/welcome" class="active nav-link"><span class="nav-text">Dashboard</span></a>
     </div>
 
     <div class="header-actions" *ngIf="!user?.username">
-      <a href="/login" class="nav-link nav-icon" aria-label="settings">
+      <a routerLink="/login" class="nav-link nav-icon" aria-label="settings">
         <clr-icon shape="user" class="is"></clr-icon>
       </a>
     </div>
@@ -24,9 +24,8 @@
           <clr-icon shape="caret down"></clr-icon>
         </button>
         <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-          <a href="/settings" clrDropdownItem>Preferences</a>
-          <a href="/account" clrDropdownItem>My account</a>
-          <button href="/" clrDropdownItem (click)="logout()">Log out</button>
+          <a routerLink="/account" clrDropdownItem>My account</a>
+          <button routerLink="/" clrDropdownItem (click)="logout()">Log out</button>
         </clr-dropdown-menu>
       </clr-dropdown>
     </div>

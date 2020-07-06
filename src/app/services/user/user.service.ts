@@ -23,11 +23,16 @@ export class UserService {
     return this.http.get<User[]>(this.url + `/api/v1/users`);
   }
 
-  public searchUser(search): Observable<User[]>{
+  public searchUser(search): Observable<User[]> {
     return this.http.post<User[]>(this.url + `/api/v1/users/search`, search);
+  }
+
+  public updateUser(user): Observable<any> {
+    return this.http.patch(this.url + `/api/v1/users`, user);
   }
 
   public getApiStatus(): Observable<any> {
     return this.http.get(this.url + `/api/v1/online`);
   }
+
 }

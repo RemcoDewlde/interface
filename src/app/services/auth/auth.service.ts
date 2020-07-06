@@ -35,6 +35,10 @@ export class AuthService {
     }));
   }
 
+  public resetPassword(body): Observable<any> {
+    return this.http.post(this.url + `/auth/reset`, body);
+  }
+
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
