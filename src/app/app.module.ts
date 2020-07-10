@@ -30,6 +30,7 @@ import { CommentComponent } from './components/guidesComponents/comment/comment.
 import { GuideManualComponent } from './components/guidesComponents/guide-manual/guide-manual.component';
 import { AdminUserComponent } from './components/admin-user-edit/admin-user-edit.component';
 import { SearchComponent } from './components/search/search.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { SearchComponent } from './components/search/search.component';
     CommentComponent,
     GuideManualComponent,
     AdminUserComponent,
-    SearchComponent
+    SearchComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,

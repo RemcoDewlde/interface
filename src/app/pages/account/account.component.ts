@@ -18,6 +18,8 @@ export class AccountComponent implements OnInit {
   passwordForm: any;
   userForm: any;
   opened = false;
+  openedError: boolean;
+  errorMessage: any;
 
 
   ngOnInit(): void {
@@ -42,14 +44,17 @@ export class AccountComponent implements OnInit {
 
   changePassword(passwords) {
     const userData = {
-      oldPassword: passwords.oldPassword,
-      newPassword: passwords.password,
-      repeatPassword: passwords.repeatPassword,
+      old_password: passwords.oldPassword,
+      new_password: passwords.password,
+      repeat_password: passwords.repeatPassword,
       userID: this.currentUser._id
     };
 
-    this.authService.resetPassword(userData).subscribe((data) => {
-      console.log(data);
+    this.authService.resetPassword(userData).subscribe((result) => {
+      this.opened = true;
+    }, error => {
+      this.errorMessage = error.error.message;
+      this.openedError = true;
     });
   }
 
@@ -58,7 +63,7 @@ export class AccountComponent implements OnInit {
     newUserDetails.username = userinfo.username;
     newUserDetails.email = userinfo.email;
     this.userService.updateUser(newUserDetails).subscribe((data) => {
-      if (data.found.length === 1) {
+      if (data.found) {
         this.opened = true;
       }
     });

@@ -24,7 +24,8 @@
 
             <clr-input-container>
               <label>Username:</label>
-              <input clrInput type="text" placeholder="Username" name="username" formControlName="username" class="wider"/>
+              <input clrInput type="text" placeholder="Username" name="username" formControlName="username"
+                     class="wider"/>
             </clr-input-container>
 
             <clr-input-container>
@@ -39,47 +40,13 @@
         <button class="btn btn-sm btn-success" (click)="changeUserinfo(userForm.value)">save userinfo</button>
       </div>
     </div>
-
-    <div class="card">
-      <!--          TODO: make this into a component-->
-      <div class="card-header">
-        Change password
-      </div>
-      <div class="card-block">
-        <div class="card-text">
-          <form clrForm [formGroup]="passwordForm">
-
-            <clr-input-container>
-              <label>Old password</label>
-              <input clrInput type="password" placeholder="Old password" name="old password"
-                     formControlName="oldPassword" class="wider"/>
-            </clr-input-container>
-
-            <clr-input-container>
-              <label>Password</label>
-              <input clrInput type="password" placeholder="New password" name="password" formControlName="password"
-                     class="wider"/>
-            </clr-input-container>
-
-            <clr-input-container>
-              <label>Repeat password</label>
-              <input clrInput type="password" placeholder="Repeat Password" name="repeatPassword"
-                     formControlName="repeatPassword" class="wider"/>
-            </clr-input-container>
-          </form>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn btn-sm btn-success" (click)="changePassword(passwordForm.value)">Change password</button>
-      </div>
-    </div>
-
+    <app-password-reset [userID]="currentUser._id"></app-password-reset>
   </div>
   <div class="clr-col-2"></div>
 </div>
 
 <clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
-  <h3 class="modal-title">Saved changes successfully</h3>
+  <h3 class="modal-title">Changes saved successfully</h3>
   <div class="modal-body">
     <p>You will need to logout and login again for the changes to take place</p>
   </div>

@@ -29,7 +29,8 @@ export class PricecardTemplateComponent implements OnInit {
     const search = {search: searchTerm};
     if (search.search != null) {
       this.templateService.searchTemplate(search).subscribe((templates) => {
-        this.templates = templates;
+        // @ts-ignore
+        this.templates = templates.found;
       });
     }
   }

@@ -32,6 +32,6 @@ export class TemplateService {
   }
 
   public searchTemplate(search): Observable<PriceCard[]>{
-    return this.http.post<PriceCard[]>(this.url + `/api/v1/templates/search`, search );
+    return this.http.post<any>(this.url + `/api/v1/templates/search`, search );
   }
 }
