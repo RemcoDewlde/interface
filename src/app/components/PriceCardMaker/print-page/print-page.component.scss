@@ -3,25 +3,29 @@
   top: -1em;
   color: black;
 
-
   .productName {
     font-size: 42px;
     color: black;
     font-weight: bold;
-    margin-top: 1em;
+    margin-top: .6em;
     text-align: center;
   }
 
   .status {
-    margin-top: .45em;
+    margin-top: .9em;
     text-align: center;
     font-size: 36px;
+    margin-bottom: 1.2em;
   }
 
   .line {
     margin-top: 1em;
     margin-left: 3em;
     margin-right: 3em;
+    hr{
+      color: black;
+      border-style: solid;
+    }
   }
 
   .sellingPoints {
@@ -35,7 +39,7 @@
 
     td {
       padding-right: 2em;
-      padding-top: .4em;
+      padding-top: .8em;
     }
   }
 
@@ -77,14 +81,14 @@
     margin-top: 1.5em;
 
     left: 10px;
-    height: 7.8em;
+    height: 12em;
     padding: 20px 40px;
     background-color: #4e9cf5;
-    bottom:0px;
+    bottom:0;
     overflow: hidden;
     @media print {
       display: block;
-      width: 100vw;
+      width: 96vw;
       margin-right: 1vw;
       margin-left: 1vw;
     }
@@ -96,13 +100,23 @@
 
 
   @media print {
+    border-style: none !important;
+    box-shadow: none !important;
+
+    .clr-row {
+      border-style: none !important;
+      box-shadow: none !important;
+    }
+
     .card {
-      border-style: none;
-      box-shadow: none;
+      border-style: none !important;
+      box-shadow: none !important;
     }
 
     html {
       background-color: white !important;
+      box-shadow: none !important;
+      border-style: none !important;
     }
     .printContent {
       page-break-before: always;
@@ -110,9 +124,19 @@
       margin-top: 1em;
       background-color: white;
       box-shadow: none !important;
+      border-style: none !important;
       padding: 0 !important;
       height: 100vh;
       width: 100vw;
+      border-bottom: none !important;
+    }
+    .bottomPage{
+      border-style: none !important;
+      box-shadow: none !important;
+    }
+
+    .card-block{
+      border: none;
     }
   }
 }
