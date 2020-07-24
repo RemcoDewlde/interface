@@ -6,12 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LoginPageComponent } from './layout/login-page/login-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MenuComponent } from './pages/menu/menu.component';
-import { IndexComponent } from './pages/index/index.component';
+import { MenuComponent } from './layout/menu/menu.component';
+import { IndexComponent } from './layout/index/index.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { RegisterComponent } from './layout/register/register.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { UsersComponent } from './components/users/users.component';
 import { GuidesComponent } from './components/guidesComponents/guides/guides.component';
@@ -22,7 +22,7 @@ import { PricecardTemplateComponent } from './components/PriceCardMaker/pricecar
 import { PricecardPreviousComponent } from './components/PriceCardMaker/pricecard-previous/pricecard-previous.component';
 import { HomewelkomComponent } from './components/homewelkom/homewelkom.component';
 import { PrintPageComponent } from './components/PriceCardMaker/print-page/print-page.component';
-import { AccountComponent } from './pages/account/account.component';
+import { AccountComponent } from './layout/account/account.component';
 import { GuideEditorComponent } from './components/guidesComponents/guide-editor/guide-editor.component';
 import { ReadGuideComponent } from './components/guidesComponents/read-guide/read-guide.component';
 import { PricecardComponent } from './components/PriceCardMaker/pricecard/pricecard.component';
@@ -31,6 +31,9 @@ import { GuideManualComponent } from './components/guidesComponents/guide-manual
 import { AdminUserComponent } from './components/admin-user-edit/admin-user-edit.component';
 import { SearchComponent } from './components/search/search.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { AdminChangeUserInfoComponent } from './components/admin-change-user-info/admin-change-user-info.component';
+import { FeatureRequestComponent } from './components/feature-request/feature-request.component';
+import { FeatureCardComponent } from './components/feature-card/feature-card.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import { PasswordResetComponent } from './components/password-reset/password-res
     GuideManualComponent,
     AdminUserComponent,
     SearchComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    AdminChangeUserInfoComponent,
+    FeatureRequestComponent,
+    FeatureCardComponent
   ],
   imports: [
     BrowserModule,

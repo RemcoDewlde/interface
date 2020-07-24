@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">
+    Feature request: {{feature?.title}}
+  </div>
+  <div class="card-block">
+    <div class="card-text">
+      <p>{{feature?.text}}</p>
+      <p>
+        <span class="label"> Posted by: {{username}}</span>
+        <span class="label">Location: {{feature.location}} </span>
+      </p>
+    </div>
+  </div>
+  <div class="card-footer" *ngIf="userRole === 'admin'">
+    <button class="btn btn-sm btn-danger" (click)="primaryButtonPress()">Delete</button>
+  </div>
+</div>

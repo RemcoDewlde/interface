@@ -15,12 +15,8 @@ export class AccountComponent implements OnInit {
 
   currentUser: any;
   userStatus: string;
-  passwordForm: any;
   userForm: any;
   opened = false;
-  openedError: boolean;
-  errorMessage: any;
-
 
   ngOnInit(): void {
     this.currentUser = this.authService.currentUserData();
@@ -29,32 +25,10 @@ export class AccountComponent implements OnInit {
     } else {
       this.userStatus = 'Not Activated';
     }
-    this.passwordForm = this.formBuilder.group({
-      oldPassword: '',
-      password: '',
-      repeatPassword: ''
-    });
 
     this.userForm = this.formBuilder.group({
       username: this.currentUser.username,
       email: this.currentUser.email,
-    });
-
-  }
-
-  changePassword(passwords) {
-    const userData = {
-      old_password: passwords.oldPassword,
-      new_password: passwords.password,
-      repeat_password: passwords.repeatPassword,
-      userID: this.currentUser._id
-    };
-
-    this.authService.resetPassword(userData).subscribe((result) => {
-      this.opened = true;
-    }, error => {
-      this.errorMessage = error.error.message;
-      this.openedError = true;
     });
   }
 

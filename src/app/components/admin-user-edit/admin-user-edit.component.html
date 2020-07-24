@@ -8,13 +8,13 @@
 
   <clr-dg-row *clrDgItems="let user of users; let i = index">
     <clr-dg-action-overflow>
-      <button class="action-item">Edit</button>
-      <button class="action-item">deactivate</button>
+      <button class="action-item" (click)="goToUser(user._id)">Edit</button>
+      <button class="action-item" (click)="deactivateUser(user._id)">deactivate</button>
     </clr-dg-action-overflow>
-    <clr-dg-cell>{{user.username}}</clr-dg-cell>
-    <clr-dg-cell>{{user.email}}</clr-dg-cell>
-    <clr-dg-cell>{{user.role}}</clr-dg-cell>
-    <clr-dg-cell>{{user.active}}</clr-dg-cell>
+    <clr-dg-cell (click)="goToUser(user._id)">{{user.username}}</clr-dg-cell>
+    <clr-dg-cell (click)="goToUser(user._id)">{{user.email}}</clr-dg-cell>
+    <clr-dg-cell (click)="goToUser(user._id)">{{user.role}}</clr-dg-cell>
+    <clr-dg-cell (click)="goToUser(user._id)">{{user.active}}</clr-dg-cell>
   </clr-dg-row>
 
 </clr-datagrid>

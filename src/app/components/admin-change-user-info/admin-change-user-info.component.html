@@ -1,0 +1,70 @@
+<div class="clr-row">
+  <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+    <div class="card">
+      <div class="card-header">
+        Change user info of {{selectedUser?.username}}
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          <form clrForm [formGroup]="userForm">
+
+            <clr-input-container>
+              <label>Username:</label>
+              <input clrInput type="text" placeholder="Username" name="username" formControlName="username"
+                     class="wider"/>
+            </clr-input-container>
+
+            <clr-input-container>
+              <label>Email:</label>
+              <input clrInput type="text" placeholder="Email" name="email" formControlName="email" class="wider"/>
+            </clr-input-container>
+
+            <clr-select-container>
+              <label>User activated:</label>
+              <select clrSelect name="options" formControlName="active">
+                <option value="true">true</option>
+                <option value="false">false</option>
+              </select>
+            </clr-select-container>
+
+            <clr-select-container>
+              <label>User role:</label>
+              <select clrSelect name="options" formControlName="role">
+                <option value="user">user</option>
+                <option value="admin">admin</option>
+              </select>
+            </clr-select-container>
+            <br>
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success btn-sm" (click)="saveUserInfo(userForm.value)">save</button>
+      </div>
+    </div>
+    <app-password-reset [userID]="selectedUser?._id"></app-password-reset>
+  </div>
+</div>
+
+
+<clr-modal [(clrModalOpen)]="success">
+  <h3 class="modal-title">Success</h3>
+  <div class="modal-body">
+      <clr-icon shape="success-standard" class="is-solid"></clr-icon>
+      Successfully changes the user
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="success = false">Ok</button>
+  </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="fail">
+  <h3 class="modal-title">Failed</h3>
+  <div class="modal-body">
+    <clr-icon shape="error-standard" class="is-solid"></clr-icon>
+    Something went wrong
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="fail = false">Ok</button>
+  </div>
+</clr-modal>

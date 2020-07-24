@@ -1,0 +1,92 @@
+<div class="clr-row">
+  <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+    <div class="card">
+      <div class="card-header">
+        Feature Request
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          <button class="btn btn-success" (click)="open = true">New feature request</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="clr-row">
+  <div class="clr-col-lg-6 clr-col-md-12 clr-col-12" *ngFor="let f of features; let i=index">
+    <app-feature-card
+      [user]="f.user_id"
+      [Feature]="f"
+      (PrimaryButtonEvent)="deleteFeature($event)">
+    </app-feature-card>
+  </div>
+</div>
+
+
+<clr-wizard [(clrWizardOpen)]="open" clrWizardSize="lg">
+  <clr-wizard-title>Feature wizard</clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Close</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Previous</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'" (clrWizardButtonClicked)="submitForm()">Done</clr-wizard-button>
+
+  <clr-wizard-page [clrWizardPageNextDisabled]="name.pristine || !formPageOne.valid">
+    <ng-template clrPageTitle>Feature request</ng-template>
+
+    <form clrForm #formPageOne="ngForm">
+      <clr-input-container>
+        <label>Feature name</label>
+        <input clrInput required [(ngModel)]="feature.title" name="name" #name="ngModel" class="wider"/>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-input-container>
+
+      <clr-textarea-container>
+        <label>Description</label>
+        <textarea clrTextarea [(ngModel)]="feature.text" name="description" class="wider" required></textarea>
+      </clr-textarea-container>
+
+      <clr-input-container>
+        <label>Where</label>
+        <input clrInput [(ngModel)]="feature.location" name="favorite" class="wider" required/>
+      </clr-input-container>
+
+    </form>
+  </clr-wizard-page>
+
+  <clr-wizard-page [clrWizardPageNextDisabled]="!formPageOne.valid">
+    <ng-template clrPageTitle>Overview</ng-template>
+    <ng-template clrPageNavTitle>
+          <span *ngIf="formPageOne.valid">
+              Ready to go!
+          </span>
+      <span *ngIf="!formPageOne.valid">
+              Not ready yet
+          </span>
+    </ng-template>
+
+    <div *ngIf="formPageOne.valid">
+      <div class="card">
+        <div class="card-header">
+          Feature request: {{feature.title}}
+        </div>
+        <div class="card-block">
+          <div class="card-text">
+            <p>Description: {{feature.text}}</p>
+            <p>
+              <span class="label"> Posted by: {{currentUser.username}}</span>
+              <span class="label">Location: {{feature.location}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!formPageOne.valid">
+      <p>Not quite there yet.</p>
+    </div>
+
+  </clr-wizard-page>
+</clr-wizard>

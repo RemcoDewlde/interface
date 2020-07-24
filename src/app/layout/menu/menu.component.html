@@ -1,6 +1,7 @@
 <div class="main-container">
   <div class="content-container">
-    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed" class="noPrint" *ngIf="currentUser?.active === true">
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed" class="noPrint"
+                      *ngIf="currentUser?.active === true">
 
       <clr-vertical-nav-group routerLinkActive="active" class="noPrint" *ngIf="env.PriceCardMaker">
         <clr-icon clrVerticalNavIcon shape="printer"></clr-icon>
@@ -75,15 +76,20 @@
              routerLinkActive="active">
             Users
           </a>
-<!--          <a clrVerticalNavLink-->
-<!--             routerLink="./admin/settings"-->
-<!--             routerLinkActive="active">-->
-<!--            Settings-->
-<!--          </a>-->
+          <!--          <a clrVerticalNavLink-->
+          <!--             routerLink="./admin/settings"-->
+          <!--             routerLinkActive="active">-->
+          <!--            Settings-->
+          <!--          </a>-->
         </clr-vertical-nav-group-children>
       </clr-vertical-nav-group>
       <div class="nav-divider"></div>
-<!--      <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">Credit</a>-->
+      <a clrVerticalNavLink routerLink="/home/feature" routerLinkActive="active" *ngIf="env.featureRequest">
+        <clr-icon clrVerticalNavIcon shape="clipboard"></clr-icon>
+        Feature request
+      </a>
+
+      <!--      <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">Credit</a>-->
     </clr-vertical-nav>
     <div class="content-area doPrint">
       <router-outlet></router-outlet>

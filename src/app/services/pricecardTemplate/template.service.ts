@@ -3,8 +3,6 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PriceCard} from '../../classes/pricecard/price-card';
-import {Template} from '@angular/compiler/src/render3/r3_ast';
-
 
 @Injectable({
   providedIn: 'root'

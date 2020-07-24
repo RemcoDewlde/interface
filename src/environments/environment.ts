@@ -12,7 +12,9 @@ export const environment = {
     Guides: true,
     Monitor: false,
     Users: false,
-    Admin: true
+    Admin: true,
+    featureRequest: true,
+    bugReport: false,
   },
   GuideOption: {
     showToGuideEditorButton: false,

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
 import {User} from '../../classes/user/user';
 import {UserService} from '../../services/user/user.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-user-edit',
@@ -10,7 +11,7 @@ import {UserService} from '../../services/user/user.service';
 })
 export class AdminUserComponent implements OnInit {
 
-  constructor(private authService: AuthService, private userService: UserService) {
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) {
   }
 
   private currentUser;
@@ -21,7 +22,7 @@ export class AdminUserComponent implements OnInit {
     this.getUsers();
   }
 
-  getUsers(){
+  getUsers() {
     this.userService.getAllUsers().subscribe((users) => {
       this.users = users;
     });
@@ -34,6 +35,22 @@ export class AdminUserComponent implements OnInit {
         this.users = users;
       });
     }
+  }
+
+  goToUser(id) {
+    this.router.navigateByUrl(`/admin/users/${id}`);
+  }
+
+  deactivateUser(id) {
+    // add modal for success or error
+    this.userService.getUser(id).subscribe((user) => {
+      user.active = false;
+      this.userService.updateUser(user).subscribe(() => {
+        this.userService.getAllUsers().subscribe((data) => {
+          this.users = data;
+        });
+      });
+    });
   }
 
 }
