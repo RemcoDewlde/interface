@@ -74,7 +74,7 @@ export class GuideEditorComponent implements OnInit {
       this.guide.tags = this.tags;
 
       this.guidesService.updateGuide(this.guide).subscribe((data) => {
-        this.router.navigate(['guidestes/guides/', this.guide._id]);
+        this.router.navigate(['guides/guides/', this.guide._id]);
       });
     }
   }
