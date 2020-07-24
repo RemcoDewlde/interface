@@ -10,14 +10,14 @@
 ### Auth
 - [X] Add admin
 - [ ] admin create new user
-- [ ] deactivate user / soft delete
-- [ ] reactivate user
+- [X] deactivate user / soft delete
+- [X] reactivate user
 - [ ] create admin on startup
 
 ### users
 - [X] change username
 - [X] change email
-- [ ] change password
+- [X] change password
 - [ ] add Profile picture
 - [ ] change profile picture
 
@@ -26,7 +26,7 @@
 - [X] delete guide
 - [X] edit guide
 - [X] read guide
-- [ ] Make routing names better
+- [X] Make routing names better
 - [ ] Add modals when deleting
 
 ### priceCard maker
@@ -37,15 +37,16 @@
 - [ ] Add modals when deleting
 
 ### feature request
-- [ ] create feature
+- [X] create feature
+- [X] delete feature
 - [ ] message dev / mail
 
 ### ng router
--  [ ] make better routes for 
-    - [ ] priceCard maker
-    - [ ] Guides
+-  [X] make better routes for 
+    - [X] priceCard maker
+    - [X] Guides
 
 ### checklist
-##### Wishlist
+### Wishlist
 
 
