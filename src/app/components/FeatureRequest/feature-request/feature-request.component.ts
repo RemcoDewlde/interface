@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth/auth.service';
-import {Feature} from '../../classes/feature/feature';
-import {FeatureService} from '../../services/feature/feature.service';
-import {UserService} from '../../services/user/user.service';
+import {AuthService} from '../../../services/auth/auth.service';
+import {Feature} from '../../../classes/feature/feature';
+import {FeatureService} from '../../../services/feature/feature.service';
+import {UserService} from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-feature-request',

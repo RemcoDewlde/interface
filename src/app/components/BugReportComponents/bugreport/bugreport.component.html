@@ -1,0 +1,110 @@
+<div class="clr-row">
+  <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+    <div class="card">
+      <div class="card-header">
+        Bug Report
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          <button class="btn btn-danger-outline" (click)="open = true">New bug report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="clr-row">
+  <div class="clr-col-lg-6 clr-col-md-12 clr-col-12" *ngFor="let b of bugs; let i=index">
+    <app-bug-card
+      [user]="b?.user_id"
+      [Bug]="b"
+      (PrimaryButtonEvent)="deleteBug($event)"
+      (SecondaryButtonEvent)="goToBugOverviewPage($event)"
+    ></app-bug-card>
+  </div>
+</div>
+
+
+<clr-wizard #wizard [(clrWizardOpen)]="open">
+  <clr-wizard-title>Bug wizard</clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Close</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Previous</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'" (clrWizardButtonClicked)="postForm()">Done</clr-wizard-button>
+
+  <clr-wizard-page [clrWizardPageNextDisabled]="number.pristine || !formPageOne.valid">
+    <ng-template clrPageTitle>Report a bug</ng-template>
+
+    <form clrForm #formPageOne="ngForm">
+      <clr-textarea-container>
+        <label>What happened</label>
+        <textarea clrTextarea [(ngModel)]="bug.what" #number="ngModel" name="what" class="wider" required></textarea>
+      </clr-textarea-container>
+
+      <clr-textarea-container>
+        <label>What did you do</label>
+        <textarea clrTextarea [(ngModel)]="bug.how" #number="ngModel" name="what" class="wider" required></textarea>
+      </clr-textarea-container>
+
+      <clr-input-container>
+        <label>Where</label>
+        <input clrInput [(ngModel)]="bug.where" name="where" class="wider"/>
+      </clr-input-container>
+    </form>
+  </clr-wizard-page>
+
+  <clr-wizard-page [clrWizardPageNextDisabled]="number.pristine || !formPageTwo.valid">
+    <ng-template clrPageTitle>Severity</ng-template>
+    <ng-template clrPageNavTitle>Severity</ng-template>
+
+    <form #formPageTwo="ngForm">
+      <div class="clr-form-control">
+        <label for="select-full" class="clr-control-label">Severity</label>
+        <div class="clr-control-container">
+          <div class="clr-select-wrapper">
+            <select id="select-full" class="clr-select" [(ngModel)]="bug.severity" [ngModelOptions]="{standalone: true}" required>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          </div>
+        </div>
+      </div>
+
+      <clr-textarea-container>
+        <label>Notes</label>
+        <textarea clrTextarea [(ngModel)]="bug.notes" #number="ngModel" name="notes" class="wider"></textarea>
+      </clr-textarea-container>
+    </form>
+  </clr-wizard-page>
+
+  <clr-wizard-page [clrWizardPageNextDisabled]="!formPageOne.valid || !formPageTwo.valid">
+    <ng-template clrPageTitle>Overview</ng-template>
+    <ng-template clrPageNavTitle>
+          <span *ngIf="formPageOne.valid && formPageTwo.valid">
+              Ready to go!
+          </span>
+      <span *ngIf="!formPageOne.valid || !formPageTwo.valid">
+              Not ready yet
+          </span>
+    </ng-template>
+
+    <div *ngIf="formPageOne.valid && formPageTwo.valid">
+      <label>Your bug report</label>
+      <section>
+        <p>Where: {{this.bug.where}}</p>
+        <p>What: {{this.bug.what}}</p>
+        <p>How: {{this.bug.how}}</p>
+        <p>Severity: {{this.bug.severity}}</p>
+      </section>
+    </div>
+
+    <div *ngIf="!formPageOne.valid || !formPageTwo.valid">
+      <p>Not quite there yet.</p>
+    </div>
+
+  </clr-wizard-page>
+</clr-wizard>

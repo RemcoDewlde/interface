@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    Bug report: {{bug?._id}}
+  </div>
+  <div class="card-block">
+    <div class="card-text">
+      <p>{{bug?.what}}</p>
+      <p>
+        <span class="label"> Posted by: {{username}}</span>
+        <span class="label">Severity: {{bug?.severity}} </span>
+        <span class="label">Where: {{bug?.where}} </span>
+
+        <span class="label">Created at: {{bug?.createdAt | date}}</span>
+      </p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-sm btn-primary-outline" (click)="secondaryButtonPress()">Go to report</button>
+    <button *ngIf="userRole === 'admin'" class="btn btn-sm btn-danger" (click)="primaryButtonPress()">Delete</button>
+  </div>
+</div>

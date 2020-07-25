@@ -1,0 +1,21 @@
+<div class="clr-row">
+  <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+    <div class="card">
+      <div class="card-header">
+        Bug report: {{bug?._id}}
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          <p>What is the problem: {{bug?.what}}</p>
+          <p>What is the problem: {{bug?.how}}</p>
+          <p>Where was the bug encountered: <span class="label">{{bug?.where}}</span></p>
+          <p>The <span class="label">{{username}}</span>thinks its of <span class="label">{{bug?.severity}}</span>
+            priority/severity</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-sm btn-danger" (click)="deleteBug()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

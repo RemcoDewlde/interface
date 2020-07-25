@@ -76,11 +76,6 @@
              routerLinkActive="active">
             Users
           </a>
-          <!--          <a clrVerticalNavLink-->
-          <!--             routerLink="./admin/settings"-->
-          <!--             routerLinkActive="active">-->
-          <!--            Settings-->
-          <!--          </a>-->
         </clr-vertical-nav-group-children>
       </clr-vertical-nav-group>
       <div class="nav-divider"></div>
@@ -88,8 +83,10 @@
         <clr-icon clrVerticalNavIcon shape="clipboard"></clr-icon>
         Feature request
       </a>
-
-      <!--      <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">Credit</a>-->
+      <a clrVerticalNavLink routerLink="/home/bug" routerLinkActive="active" *ngIf="env.bugReport">
+        <clr-icon clrVerticalNavIcon shape="bug"></clr-icon>
+        Bug report
+      </a>
     </clr-vertical-nav>
     <div class="content-area doPrint">
       <router-outlet></router-outlet>

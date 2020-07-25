@@ -18,7 +18,9 @@ import {ReadGuideComponent} from './components/guidesComponents/read-guide/read-
 import {GuideManualComponent} from './components/guidesComponents/guide-manual/guide-manual.component';
 import {AdminUserComponent} from './components/admin-user-edit/admin-user-edit.component';
 import {AdminChangeUserInfoComponent} from './components/admin-change-user-info/admin-change-user-info.component';
-import {FeatureRequestComponent} from './components/feature-request/feature-request.component';
+import {FeatureRequestComponent} from './components/FeatureRequest/feature-request/feature-request.component';
+import {BugreportComponent} from './components/BugReportComponents/bugreport/bugreport.component';
+import {BugReportOverviewComponent} from './components/BugReportComponents/bug-report-overview/bug-report-overview.component';
 
 
 const routes: Routes = [
@@ -30,6 +32,9 @@ const routes: Routes = [
       {path: 'welcome', component: HomewelkomComponent, canActivate: [AuthGuard]},
       {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
       {path: 'feature', component: FeatureRequestComponent, canActivate: [AuthGuard]},
+      {path: 'bug', component: BugreportComponent, canActivate: [AuthGuard]},
+      {path: 'bug/:id', component: BugReportOverviewComponent, canActivate: [AuthGuard]},
+
     ]},
   {path: 'admin', component: MenuComponent, canActivate: [AuthGuard], children: [
       {path: 'users', component: AdminUserComponent, canActivate: [AuthGuard]},

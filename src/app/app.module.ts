@@ -32,8 +32,11 @@ import { AdminUserComponent } from './components/admin-user-edit/admin-user-edit
 import { SearchComponent } from './components/search/search.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { AdminChangeUserInfoComponent } from './components/admin-change-user-info/admin-change-user-info.component';
-import { FeatureRequestComponent } from './components/feature-request/feature-request.component';
-import { FeatureCardComponent } from './components/feature-card/feature-card.component';
+import { FeatureRequestComponent } from './components/FeatureRequest/feature-request/feature-request.component';
+import { FeatureCardComponent } from './components/FeatureRequest/feature-card/feature-card.component';
+import { BugreportComponent } from './components/BugReportComponents/bugreport/bugreport.component';
+import { BugCardComponent } from './components/BugReportComponents/bug-card/bug-card.component';
+import { BugReportOverviewComponent } from './components/BugReportComponents/bug-report-overview/bug-report-overview.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { FeatureCardComponent } from './components/feature-card/feature-card.com
     PasswordResetComponent,
     AdminChangeUserInfoComponent,
     FeatureRequestComponent,
-    FeatureCardComponent
+    FeatureCardComponent,
+    BugreportComponent,
+    BugCardComponent,
+    BugReportOverviewComponent
   ],
   imports: [
     BrowserModule,

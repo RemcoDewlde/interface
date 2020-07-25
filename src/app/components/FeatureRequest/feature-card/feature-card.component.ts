@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {UserService} from '../../services/user/user.service';
-import {User} from '../../classes/user/user';
-import {AuthService} from '../../services/auth/auth.service';
+import {UserService} from '../../../services/user/user.service';
+import {User} from '../../../classes/user/user';
+import {AuthService} from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-feature-card',
