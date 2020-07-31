@@ -10,7 +10,6 @@ export class BugService {
 
   private url = `http://${environment.api_url}`;
 
-
   constructor(private http: HttpClient) { }
 
   public getAllBugReports(): Observable<any> {

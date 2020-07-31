@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BugService} from '../../../services/bug/bug.service';
 import {User} from '../../../classes/user/user';
 import {UserService} from '../../../services/user/user.service';
+import {AuthService} from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-bug-report-overview',
@@ -13,8 +14,9 @@ export class BugReportOverviewComponent implements OnInit {
 
   public bug;
   public postedBy: User;
+  public currentUser;
 
-  constructor(private route: ActivatedRoute, private router: Router, private bugService: BugService, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private router: Router, private bugService: BugService, private userService: UserService, private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -33,10 +35,15 @@ export class BugReportOverviewComponent implements OnInit {
         }
       });
     }
+    this.currentUser = this.authService.currentUserData();
   }
 
   get username() {
     return this.postedBy?.username;
+  }
+
+  get userRole() {
+    return this.currentUser?.role;
   }
 
   deleteBug() {

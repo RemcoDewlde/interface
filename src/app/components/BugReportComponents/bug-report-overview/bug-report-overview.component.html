@@ -13,7 +13,7 @@
             priority/severity</p>
         </div>
       </div>
-      <div class="card-footer">
+      <div class="card-footer" *ngIf="userRole === 'admin'">
         <button class="btn btn-sm btn-danger" (click)="deleteBug()">Delete</button>
       </div>
     </div>
